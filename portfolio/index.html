@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yufang Wong | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+TC:wght@300;500;700&display=swap');
+
+        :root {
+            --bg-color: #F4F1E9;
+            --accent-color: #5D4037;
+            --coffee-brown: #3E2723;
+            --dream-glow: #a855f7;
+            --cal-blue: #003399;
+            --uiux-bg: #F9F8F6;
+            --ink-black: #1a1a1a;
+            --three-d-bg: #0f172a;
+            --prog-blue: #1e293b;
+            --ai-glow: #10b981;
+        }
+
+        body {
+            font-family: 'Gaegu', 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--accent-color);
+            min-height: 100vh;
+            width: 100%;
+            background-image: radial-gradient(#dcd9c6 0.8px, transparent 0.8px);
+            background-size: 24px 24px;
+            cursor: none;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* 自定義滑鼠樣式 */
+        #custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            pointer-events: none;
+            z-index: 20000;
+            transition: transform 0.15s ease-out;
+            transform: translate(-50%, -50%);
+        }
+
+        body.dream-mode #custom-cursor {
+            filter: drop-shadow(0 0 10px var(--dream-glow));
+        }
+
+        @keyframes steamFlow {
+            0%, 100% { transform: translateY(0) scaleX(1); opacity: 0.6; }
+            50% { transform: translateY(-5px) scaleX(1.1); opacity: 0.9; }
+        }
+
+        #custom-cursor svg {
+            animation: steamFlow 2s ease-in-out infinite;
+            transition: all 0.5s ease;
+        }
+
+        a, button, .floating-element, .lang-option, .flip-card, .big-bean-container, .uiux-card, .video-trigger {
+            cursor: none !important;
+        }
+
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1920px; 
+            margin: 0 auto;
+            perspective: 1200px;
+        }
+
+        @keyframes floatRealistic {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-15px) rotate(3deg) scale(1.02); }
+        }
+
+        .floating-element {
+            position: absolute;
+            z-index: 40;
+            animation: floatRealistic 6s ease-in-out infinite;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(15px 20px 15px rgba(0,0,0,0.2));
+        }
+
+        .floating-element:hover {
+            transform: scale(1.1) translateZ(60px);
+            filter: drop-shadow(25px 40px 25px rgba(0,0,0,0.25));
+            z-index: 50;
+        }
+
+        .big-bean-container {
+            position: relative;
+            width: 190px; 
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (min-width: 1280px) {
+            .big-bean-container {
+                width: 280px; 
+                height: 190px;
+            }
+        }
+
+        .bean-text {
+            position: absolute;
+            z-index: 10;
+            color: #fff;
+            font-size: 1.3rem; 
+            font-weight: 700;
+            text-align: center;
+            pointer-events: none;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+            padding: 0 15px;
+            transform: translateZ(15px);
+        }
+
+        .main-canvas-wrapper {
+            perspective: 1500px;
+            z-index: 20;
+            width: 90%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-canvas {
+            background: #ffffff;
+            border: 14px solid #333;
+            border-radius: 45px;
+            box-shadow: 
+                0 12px 0 #1a1a1a,
+                0 40px 80px -20px rgba(0, 0, 0, 0.35), 
+                inset 0 0 20px rgba(0,0,0,0.05);
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 11;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+        }
+
+        @media (min-width: 1280px) {
+            .main-canvas {
+                border-width: 22px;
+            }
+        }
+
+        .inner-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #f0f0f0;
+            border-radius: 30px;
+            background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f9f9f9 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: translateZ(30px);
+        }
+
+        .section-about {
+            padding: 120px 20px; 
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            perspective: 2000px; 
+        }
+
+        .section-uiux {
+            padding: 120px 20px;
+            width: 100%;
+            background-color: var(--uiux-bg);
+            position: relative;
+            z-index: 10;
+        }
+
+        .uiux-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .uiux-card:hover {
+            transform: translateY(-15px) scale(1.02);
+        }
+
+        /* 墨彩跳轉特效 */
+        #graphic-vortex {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #fff;
+            z-index: 12000;
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #graphic-vortex.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .ink-splash {
+            position: absolute;
+            background: var(--ink-black);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: inkBurst 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
+
+        @keyframes inkBurst {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(50); opacity: 1; }
+        }
+
+        .graphic-content-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 12001;
+            background: #f8f8f7; 
+            background-image: linear-gradient(#e5e5e0 1px, transparent 1px), linear-gradient(90deg, #e5e5e0 1px, transparent 1px);
+            background-size: 50px 50px;
+            display: none;
+            flex-direction: column;
+            color: #1a1a1a; 
+            overflow-y: auto;
+        }
+
+        .graphic-content-overlay.active {
+            display: flex;
+        }
+
+        /* 3D 頁面敘渦跳轉 */
+        #three-d-vortex {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, #334155 0%, #0f172a 100%);
+            z-index: 15000;
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #three-d-vortex.active {
+            opacity: 1;
+            pointer-events: all;
+            animation: vortexIn 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+
+        @keyframes vortexIn {
+            0% { clip-path: circle(0% at 50% 50%); transform: scale(0.5) rotate(-180deg); }
+            100% { clip-path: circle(150% at 50% 50%); transform: scale(1) rotate(0deg); }
+        }
+
+        .three-d-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 15001;
+            background: var(--three-d-bg);
+            color: #f8fafc;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .three-d-overlay.active {
+            display: flex;
+        }
+
+        /* 程式頁面敘渦跳轉 */
+        #programming-vortex {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #0f172a;
+            z-index: 16000;
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #programming-vortex.active {
+            opacity: 1;
+            pointer-events: all;
+            animation: progVortex 1s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+        }
+
+        @keyframes progVortex {
+            0% { transform: scaleY(0); }
+            100% { transform: scaleY(1); }
+        }
+
+        .programming-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 16001;
+            background: #020617;
+            color: #94a3b8;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .programming-overlay.active {
+            display: flex;
+        }
+
+        /* AI 頁面敘渦跳轉 */
+        #ai-vortex {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #064e3b;
+            z-index: 17000;
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #ai-vortex.active {
+            opacity: 1;
+            pointer-events: all;
+            animation: aiVortexEffect 1s ease-in-out forwards;
+        }
+
+        @keyframes aiVortexEffect {
+            0% { clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%); }
+            100% { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); }
+        }
+
+        .ai-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 17001;
+            background: #042f2e;
+            color: #ccfbf1;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .ai-overlay.active {
+            display: flex;
+        }
+
+        #coffee-splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--coffee-brown);
+            z-index: 9998;
+            clip-path: circle(0% at 50% 50%);
+            pointer-events: none;
+            transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        #coffee-splash.active {
+            clip-path: circle(150% at 50% 50%);
+        }
+
+        #dream-vortex {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, #6366f1 0%, #a855f7 50%, #000 100%);
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease, background 0.5s ease;
+            mix-blend-mode: multiply;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #dream-vortex.active {
+            opacity: 1;
+            pointer-events: all;
+            animation: vortexSwirl 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+
+        #dream-vortex.blue-mode {
+            background: radial-gradient(circle, #0ea5e9 0%, #003399 60%, #000 100%);
+        }
+
+        @keyframes vortexSwirl {
+            0% { transform: scale(0.1) rotate(0deg); clip-path: circle(0% at 50% 50%); }
+            50% { transform: scale(1.5) rotate(180deg); clip-path: circle(100% at 50% 50%); }
+            100% { transform: scale(3) rotate(360deg); clip-path: circle(150% at 50% 50%); }
+        }
+
+        .dream-content-overlay, .project-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10001;
+            display: none;
+            flex-direction: column;
+            padding: 4rem 2rem;
+            color: white;
+            overflow-y: auto;
+        }
+
+        .dream-content-overlay { background: #0f172a; }
+        .project-overlay { background: #0a1128; }
+
+        .dream-content-overlay.active, .project-overlay.active {
+            display: flex;
+        }
+      /* 電腦版 hover 與 手機/平板點擊 class 同時並行 */
+.flip-card:hover, 
+.flip-card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card {
+    position: relative;
+    width: 100%;
+    height: 1400px;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 50px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flip-card-front {
+    background: white;
+    justify-content: center;
+    overflow: visible; /* 確保咖啡豆顯示 */
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    background: #FFFBF0; 
+    justify-content: flex-start;
+    overflow-y: auto; /* 內容多時允許捲動 */
+}
+        .skill-icon {
+            background: white;
+            padding: 12px;
+            border-radius: 16px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            font-family: sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+        }
+        .skill-icon:hover {
+            transform: translateY(-8px) scale(1.1);
+            background: #fef3c7;
+        }
+
+        .skill-name {
+            font-size: 10px;
+            line-height: 1.2;
+            margin-top: 8px;
+            font-weight: 900;
+            color: #a8a29e;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 100;
+            background: white;
+            padding: 5px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+        }
+
+        .lang-option {
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        .lang-option.active {
+            background: var(--coffee-brown);
+            color: white;
+        }
+
+        .nav-pill {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 30px;
+            border-radius: 999px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .edu-item, .exp-item {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 5px solid #d4a373;
+            transition: all 0.3s ease;
+        }
+
+        .back-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            width: 100%;
+        }
+
+        @media (min-width: 1024px) {
+            .back-grid {
+                grid-template-columns: 1fr 1.15fr;
+                gap: 6rem;
+            }
+        }
+
+        .back-section-title {
+            font-size: 2.25rem; 
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+        .item-main-text {
+            font-size: 1.35rem; 
+            line-height: 1.8rem;
+            margin-bottom: 0.25rem;
+        }
+        .item-sub-text {
+            font-size: 1rem; 
+            color: #78350f;
+            opacity: 0.9;
+        }
+        .item-desc-text {
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+        .item-date-tag {
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 50px;
+        }
+
+        /* 影片與圖片相關樣式 */
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            transition: opacity 0.4s ease;
+            cursor: pointer;
+        }
+
+        .video-trigger:hover .video-overlay {
+            background-color: rgba(15, 23, 42, 0.2);
+        }
+
+        .video-trigger.is-playing .video-overlay {
+            opacity: 0;
+        }
+
+        .video-trigger.is-playing:hover .video-overlay {
+            opacity: 1;
+            background-color: rgba(15, 23, 42, 0.4);
+        }
+
+        .render-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .render-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* AI 頁面的背景特殊效果 */
+.ai-overlay {
+    background: radial-gradient(circle at 50% 0%, #064e3b 0%, #020617 100%);
+    position: relative;
+}
+
+/* 模擬電子螢幕掃描線 */
+.ai-overlay::before {
+    content: " ";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+    background-size: 100% 3px, 3px 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* 簡單的脈衝動畫 */
+@keyframes pulse {
+    0%, 100% { transform: scaleY(1); opacity: 0.5; }
+    50% { transform: scaleY(1.3); opacity: 1; }
+}
+
+/* 隱藏滾動條但保留功能 */
+#ai-page::-webkit-scrollbar {
+    display: none;
+}
+#ai-page {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* 背景流體浮動動畫 */
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+/* 隱藏滾動條 */
+#ai-page::-webkit-scrollbar { display: none; }
+#ai-page { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* 標題與文字的清晰度優化 */
+.ai-overlay h2 {
+    text-shadow: 0 10px 20px rgba(0,0,0,0.02);
+}
+
+
+
+/* ✅ 放在 CSS 檔案的最上方 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 你原本的 .flip-card 樣式 ... */
+.flip-card {
+    position: relative;
+   
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <!-- 墨彩跳轉層 -->
+    <div id="graphic-vortex">
+        <div class="ink-splash w-10 h-10"></div>
+    </div>
+
+    <!-- 平面設計內容層 -->
+    <div id="graphic-content" class="graphic-content-overlay">
+        <button onclick="closeOverlay('graphic-content')" class="fixed top-10 right-10 text-stone-900 border border-stone-900/30 px-6 py-2 rounded-full hover:bg-stone-900 hover:text-white transition z-[12002] font-bold">EXIT GALLERY</button>
+        
+        <div class="max-w-6xl mx-auto py-24 px-8 w-full">
+            <div class="mb-24 border-b border-stone-200 pb-12">
+                <p class="text-stone-400 font-black tracking-[0.4em] mb-4">平面設計作品集 GRAPHIC DESIGN PORTFOLIO</p>
+                <h2 class="text-5xl md:text-7xl font-bold tracking-tighter leading-tight text-stone-900">
+                    Visual Exploration & Design
+                </h2>
+            </div>
+
+            <div class="mb-32">
+                <div class="flex flex-col mb-12">
+                    <span class="text-stone-400 font-bold mb-2 tracking-widest uppercase">Part 01</span>
+                    <h3 class="text-4xl md:text-5xl font-bold tracking-tight text-stone-900">Brand Identity Redesign</h3>
+                    <div class="text-2xl md:text-3xl mt-4 font-bold text-stone-500">品牌識別重塑</div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <div class="space-y-8">
+                        <p class="text-2xl text-stone-600 leading-relaxed font-light">
+                            致力於解決原始標誌辨識度不足的問題，將複雜線條去蕪存菁，轉化為具幾何感與現代感的流暢曲線。
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-stone-200 pt-8">
+                            <div>
+                                <h4 class="text-stone-400 text-xs font-bold mb-2 uppercase tracking-widest">兩人專案</h4>
+                                <p class="text-lg text-stone-700 font-bold">擔任：技術執行與規範 · Logo 設計</p>
+                            </div>
+                            <div>
+                                <h4 class="text-stone-400 text-xs font-bold mb-2 uppercase tracking-widest">Project Timeline</h4>
+                                <p class="text-lg text-stone-700 font-bold">專案時程：2 個月</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aspect-video bg-white rounded-[40px] border border-stone-200 shadow-xl shadow-stone-200/50 flex items-center justify-center overflow-hidden order-2 lg:order-1">
+                        <img src="平面2.png" alt="Graphic Fundamentals" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-20">
+                <div class="flex flex-col mb-12">
+                    <span class="text-stone-400 font-bold mb-2 tracking-widest uppercase">Part 02</span>
+                    <h3 class="text-4xl md:text-5xl font-bold tracking-tight text-stone-900">The Fundamentals of Graphic Design</h3>
+                    <div class="text-2xl md:text-3xl mt-4 font-bold text-stone-500">平面設計基礎與構成元素練習</div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <div class="aspect-video bg-white rounded-[40px] border border-stone-200 shadow-xl shadow-stone-200/50 flex items-center justify-center overflow-hidden">
+                        <img src="Gemini_Generated_Image_f6mcy0f6mcy0f6mc.png" alt="Brand Identity" class="w-full h-full object-cover">
+                    </div>
+                    <div class="space-y-8 order-1 lg:order-2">
+                        <p class="text-2xl text-stone-600 leading-relaxed font-light">
+                            探索平面構成的核心要素：點、線、面。透過密集的視覺練習，強化對版面平衡、字體編排與空間負值的掌握能力。
+                        </p>
+                        <div class="grid grid-cols-1 gap-6 border-t border-stone-200 pt-8">
+                            <div>
+                                <h4 class="text-stone-400 text-xs font-bold mb-2 uppercase tracking-widest">Exercise</h4>
+                                <p class="text-lg text-stone-700">網格系統應用、字體性格探索、抽象元素轉譯</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3D 作品展示頁面 -->
+    <div id="three-d-vortex">
+        <div class="text-white text-4xl font-bold tracking-[1em] animate-pulse">RENDERING...</div>
+    </div>
+    
+    <div id="three-d-page" class="three-d-overlay">
+        <button onclick="closeOverlay('three-d-page')" class="fixed top-10 right-10 text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white hover:text-black transition z-[15002] font-bold">EXIT 3D WORLD</button>
+        
+        <div class="max-w-6xl mx-auto w-full py-32 px-8">
+            <div class="mb-20">
+                <span class="text-blue-400 font-bold tracking-[0.5em] uppercase text-sm">Portfolio Section</span>
+                <h2 class="text-6xl md:text-8xl font-black italic mt-4 leading-[1.1]">
+                    3D 建模<br>
+                    <span class="text-4xl md:text-5xl opacity-60 not-italic tracking-normal">3D Modeling</span>
+                </h2>
+            </div>
+
+            <!-- 項目 01 -->
+            <div class="mb-32">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-10 h-[2px] bg-blue-500"></div>
+                    <h3 class="text-2xl font-bold tracking-widest uppercase">01. 三維建模實踐</h3>
+                </div>
+                
+                <!-- 影片播放器 -->
+                <div class="w-full aspect-video bg-black rounded-[40px] border border-white/10 overflow-hidden shadow-2xl group relative video-trigger mb-12" id="video-wrapper">
+                    <video id="work-reel-video" preload="metadata" loop class="w-full h-full object-cover">
+                        <source src="過曝的童年與柔焦的記憶 Overexposed Childhood & Soft Focus Memory - 黃于芳 (1080p).mp4" type="video/mp4">
+                        您的瀏覽器不支援影片播放。
+                    </video>
+
+                    <div class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/40 video-overlay" id="video-ui" onclick="togglePlay()">
+                         <div class="w-24 h-24 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500" id="play-button-icon">
+                            <svg class="w-10 h-10 fill-white ml-2" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                         </div>
+                         <div class="mt-6 text-center">
+                            <p class="font-black tracking-[0.4em] text-white/80" id="video-status-text">CLICK TO PLAY</p>
+                            <p class="text-xs text-blue-400 mt-2 font-bold opacity-0 group-hover:opacity-100 transition-opacity">WORK REEL DEMO</p>
+                         </div>
+                    </div>
+
+                    <div class="absolute bottom-0 left-0 w-full h-1.5 bg-white/10">
+                        <div class="h-full bg-blue-500 w-0 transition-all duration-300" id="video-progress"></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 text-slate-200">
+                    <div class="lg:col-span-8">
+                        <div class="mb-10">
+                            <h4 class="text-blue-400 font-bold tracking-widest text-sm uppercase mb-4">主題：光的濾鏡</h4>
+                            <h5 class="text-4xl md:text-5xl font-black mb-2">過曝的童年與柔焦的記憶</h5>
+                            <p class="text-2xl font-bold opacity-60 italic">The Light Filter: Overexposed Childhood & Soft Focus Memory</p>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <h4 class="text-blue-400 font-bold tracking-widest text-sm uppercase">作品簡介</h4>
+                            <div class="text-xl leading-relaxed font-light opacity-90 space-y-4">
+                                <p>記憶並非對事實的機械式捕捉，而是情緒篩選後的產物。透過這層感性濾鏡，回憶被刻意地染上色彩——放大溫暖與美好，同時柔化了痛苦與瑕疵。</p>
+                                <p>本作品利用 Autodesk Maya 探索記憶的非線性特質，透過過曝、柔焦與丁達爾效應，營造超現實的空間感，將消逝的時光轉化為純粹的情感共鳴。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 border-l border-white/10 pl-8 space-y-10">
+                        <div>
+                            <h4 class="text-blue-400 font-bold tracking-widest text-sm uppercase mb-4">Project Data</h4>
+                            <ul class="space-y-4 text-lg">
+                                <li class="flex flex-col"><span class="text-xs opacity-40 uppercase">作品類型</span><span class="font-bold">3D 動畫</span></li>
+                                <li class="flex flex-col"><span class="text-xs opacity-40 uppercase">作品長度</span><span class="font-bold">1 分鐘 13 秒</span></li>
+                                <li class="flex flex-col"><span class="text-xs opacity-40 uppercase">完成時間</span><span class="font-bold">2025 年 12 月 26 號</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-blue-400 font-bold tracking-widest text-sm uppercase mb-4">Production</h4>
+                            <ul class="space-y-4 text-lg">
+                                <li class="flex flex-col"><span class="text-xs opacity-40 uppercase">團隊合作 | 擔任職務</span><span class="font-bold">建模、場景設計、燈光、渲染、剪輯、配樂</span></li>
+                                <li class="flex flex-col"><span class="text-xs opacity-40 uppercase">使用工具</span><span class="font-bold">Autodesk Maya / DaVinci Resolve</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 項目 02 -->
+            <div>
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-10 h-[2px] bg-blue-500"></div>
+                    <h3 class="text-2xl font-bold tracking-widest uppercase">02. 三維幾何與燈光探索練習</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Concept A 靜謐之境 -->
+                    <div class="bg-slate-900/50 rounded-[40px] border border-white/10 overflow-hidden relative group flex flex-col">
+                        <div class="aspect-[4/3] bg-slate-800 overflow-hidden relative">
+                             <!-- 渲染預覽 A 圖片區塊 -->
+                             <img src="3d01.png" alt="靜謐之境渲染預覽" class="render-image">
+                             <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-1">作品名稱</h4>
+                                    <h5 class="text-2xl font-bold">靜謐之境：光影的空間敘事</h5>
+                                </div>
+                                <span class="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full font-bold">2025</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 border-t border-white/5 pt-4">
+                                <div>
+                                    <p class="text-[10px] text-white/30 uppercase font-bold tracking-tighter">作品類型</p>
+                                    <p class="text-sm font-bold">3D 渲染</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-white/30 uppercase font-bold tracking-tighter">使用軟體</p>
+                                    <p class="text-sm font-bold">Autodesk Maya</p>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-white/30 uppercase font-bold tracking-tighter mb-1">技術重點</p>
+                                <p class="text-sm text-slate-300">丁達爾效應 (Tyndall Effect)、Gobo 燈光投影</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Concept B 瓶裝造型 -->
+                    <div class="bg-slate-900/50 rounded-[40px] border border-white/10 overflow-hidden relative group flex flex-col">
+                        <div class="aspect-[4/3] bg-slate-800 overflow-hidden relative">
+                             <!-- 渲染預覽 B 圖片區塊 -->
+                             <img src="3d02.png" alt="瓶裝造型渲染預覽" class="render-image">
+                             <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-1">作品名稱</h4>
+                                    <h5 class="text-2xl font-bold">瓶裝造型練習</h5>
+                                </div>
+                                <span class="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full font-bold">2025</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 border-t border-white/5 pt-4">
+                                <div>
+                                    <p class="text-[10px] text-white/30 uppercase font-bold tracking-tighter">作品類型</p>
+                                    <p class="text-sm font-bold">3D 渲染</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-white/30 uppercase font-bold tracking-tighter">使用軟體</p>
+                                    <p class="text-sm font-bold">Autodesk Maya</p>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-white/30 uppercase font-bold tracking-tighter mb-1">技術重點</p>
+                                <p class="text-sm text-slate-300">硬表面建模、UV 拆解與標籤貼圖</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 程式作品展示頁面 -->
+    <div id="programming-vortex">
+        <div class="text-blue-400 text-3xl font-mono animate-pulse">&lt;Compiling Resources... /&gt;</div>
+    </div>
+    
+    <div id="programming-page" class="programming-overlay">
+        <button onclick="closeOverlay('programming-page')" class="fixed top-10 right-10 text-slate-400 border border-slate-700 px-6 py-2 rounded-lg hover:bg-red-500/20 hover:text-red-400 hover:border-red-500/50 transition-all z-[16002] font-mono">
+            [ EXIT_PROCESS ]
+        </button>
+        
+        <div class="max-w-6xl mx-auto w-full py-32 px-8">
+            <div class="mb-20 border-l-4 border-blue-500 pl-8">
+                <span class="text-blue-500 font-mono uppercase text-sm">root@yufang:~/projects/code</span>
+                <h2 class="text-6xl md:text-8xl font-black text-white mt-4 tracking-tighter">
+                    Interactive Educational Website<br>
+                    互動教育網站
+                    <span class="text-3xl md:text-4xl text-slate-500 font-mono">&lt;Development /&gt;</span>
+                </h2>
+            </div>
+    
+            <div class="flex justify-center">
+                <div class="bg-slate-900 border border-slate-800 p-8 md:p-12 rounded-3xl hover:border-blue-500/50 transition-colors group max-w-5xl w-full shadow-2xl">
+                    
+                    <div class="flex items-center space-x-2 mb-10">
+                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                        <span class="text-slate-600 font-mono text-xs ml-4 border-l border-slate-800 pl-4 italic">pangolin_project.exe</span>
+                    </div>
+    
+                    <div class="mb-12">
+                        <h3 class="text-4xl md:text-6xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">守護·鱗跡</h3>
+                        <p class="text-xl md:text-2xl text-blue-400/90 italic tracking-widest font-light">「讓鱗跡永存，讓生命長存。」</p>
+                    </div>
+    
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+                        <div class="lg:col-span-1 space-y-8 border-r border-slate-800/50 pr-8">
+                            <div>
+                                <h4 class="text-blue-500 font-mono text-xs uppercase mb-3 tracking-widest">Project Type</h4>
+                                <p class="text-slate-300 text-lg">互動式衛教網頁設計</p>
+                            </div>
+                            <div>
+                                <h4 class="text-blue-500 font-mono text-xs uppercase mb-3 tracking-widest">Role</h4>
+                                <ul class="text-slate-400 space-y-2">
+                                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span>內容企劃</li>
+                                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span>網頁關係圖</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-blue-500 font-mono text-xs uppercase mb-3 tracking-widest">Stack</h4>
+                                <div class="flex flex-wrap gap-2 text-[11px] font-mono">
+                                    <span class="px-2 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700">HTML5</span>
+                                    <span class="px-2 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700">JS</span>
+                                    <span class="px-2 py-1 bg-blue-900/30 text-blue-400 rounded border border-blue-500/30">VS Code</span>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="lg:col-span-2 space-y-10">
+                            <div>
+                                <h4 class="text-white font-bold text-xl mb-4 flex items-center"><span class="text-blue-500 mr-2">#</span> 專案核心</h4>
+                                <p class="text-slate-400 leading-relaxed text-lg">本專案以穿山甲為核心，探討這群因鱗片而面臨走私風險的哺乳類。引導大眾直面非法貿易，反思人類活動與生態失衡。</p>
+                            </div>
+                            <div class="pt-8 border-t border-slate-800">
+                                <h4 class="text-white font-bold text-xl mb-4 flex items-center"><span class="text-green-500 mr-2">#</span> 實踐目標</h4>
+                                <p class="text-slate-400 leading-relaxed text-lg">呼應 SDG 15 目標，透過「卷軸式敘事」將複雜數據轉譯為直觀的生命教育，實踐守護生物多樣性的願景。</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="mt-12">
+                        <h4 class="text-white font-bold text-2xl mb-6 flex items-center">
+                            <span class="text-blue-500 mr-3">/</span> 點擊圖片進入互動展示
+                        </h4>
+                        
+                        <div onclick="openLiveDemo()" class="cursor-pointer rounded-2xl overflow-hidden border border-slate-700 bg-slate-950 shadow-2xl group/img relative">
+                            <div class="bg-slate-800/80 px-4 py-2 flex items-center border-b border-slate-800">
+                                <div class="flex space-x-1.5 mr-6">
+                                    <div class="w-2 h-2 rounded-full bg-red-500/50"></div>
+                                    <div class="w-2 h-2 rounded-full bg-yellow-500/50"></div>
+                                    <div class="w-2 h-2 rounded-full bg-green-500/50"></div>
+                                </div>
+                                <div class="bg-slate-900/50 text-blue-400/60 text-[9px] px-3 py-1 rounded flex-1 font-mono text-center">
+                                    CLICK_TO_LAUNCH_LIVE_PREVIEW.exe
+                                </div>
+                            </div>
+                            
+                            <div class="w-full relative bg-slate-900 overflow-hidden">
+                                <img src="Untitled-1.png" alt="專案展示圖" class="w-full h-auto block group-hover:scale-105 transition-transform duration-1000 ease-out opacity-80 group-hover:opacity-100">
+                                
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-blue-600/10 backdrop-blur-[2px]">
+                                    <div class="bg-blue-600 text-white px-6 py-3 rounded-full font-mono text-sm shadow-xl tracking-widest">
+                                        INITIALIZING LIVE PREVIEW...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="live-demo-modal" class="fixed inset-0 z-[20000] hidden flex-col bg-slate-950/95 backdrop-blur-xl transition-all duration-500">
+        <div class="w-full h-16 bg-slate-900/50 border-b border-slate-800 flex items-center justify-between px-8">
+            <div class="flex items-center space-x-4">
+                <span class="text-blue-500 font-mono text-sm animate-pulse">● LIVE_SERVER ACTIVE</span>
+                <span class="text-slate-500 font-mono text-xs hidden md:inline">| Project: 守護·鱗跡</span>
+            </div>
+            <button onclick="closeLiveDemo()" class="text-slate-400 hover:text-red-400 border border-slate-700 px-4 py-1 rounded font-mono text-sm hover:bg-red-500/20 hover:border-red-500/50 transition-all">
+                [ EXIT_PROCESS ]
+            </button>
+        </div>
+        
+        <div class="flex-1 w-full bg-white relative">
+            <iframe id="demo-frame" src="" class="w-full h-full border-none shadow-inner"></iframe>
+        </div>
+    </div>
+    
+    <script>
+        function openLiveDemo() {
+            const modal = document.getElementById('live-demo-modal');
+            const iframe = document.getElementById('demo-frame');
+            iframe.src = 'https://yufangwong.github.io/pangolin-project/'; 
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+    
+        function closeLiveDemo() {
+            const modal = document.getElementById('live-demo-modal');
+            const iframe = document.getElementById('demo-frame');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            iframe.src = ''; 
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+    </script>
+    <!-- AI 作品展示頁面 -->
+    <div id="ai-vortex" class="fixed inset-0 z-[17000] bg-white/90 backdrop-blur-xl flex items-center justify-center overflow-hidden hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-50 blur-[120px] animate-pulse"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-50 blur-[120px] animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+        <div class="relative flex flex-col items-center">
+            <div class="w-12 h-12 border-4 border-slate-100 border-t-blue-500 rounded-full animate-spin"></div>
+            <div class="mt-6 text-slate-400 text-[10px] font-mono tracking-[0.4em] uppercase font-bold">Initializing Light Mode</div>
+        </div>
+    </div>
+    
+    <div id="ai-page" class="ai-overlay fixed inset-0 z-[17001] hidden overflow-y-auto bg-slate-50/50">
+        <div class="fixed inset-0 pointer-events-none overflow-hidden">
+            <div class="absolute top-[10%] left-[15%] w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-[100px] animate-[float_15s_infinite_ease-in-out]"></div>
+            <div class="absolute bottom-[10%] right-[10%] w-[600px] h-[600px] bg-emerald-100/40 rounded-full blur-[120px] animate-[float_20s_infinite_ease-in-out_reverse]"></div>
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,#00000003_1px,transparent_1px),linear-gradient(to_bottom,#00000003_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        </div>
+    
+        <button id="btn-back" onclick="goBack()" class="fixed top-10 right-10 text-slate-400 border border-slate-200 px-8 py-2 rounded-full hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all z-[19000] pointer-events-auto font-mono text-[10px] font-bold tracking-[0.2em] bg-white/80 backdrop-blur-md shadow-sm">
+            [ BACK ]
+        </button>
+        
+        <div class="relative z-10 max-w-6xl mx-auto w-full py-32 px-8">
+            <div class="mb-24">
+                <div class="inline-block px-4 py-1 rounded-full bg-blue-500/10 text-blue-600 font-mono text-[10px] font-bold uppercase tracking-widest mb-6">
+                    AI Collaborative
+                </div>
+                <h2 class="text-7xl md:text-9xl font-black text-slate-900 leading-none tracking-tighter">
+                    AI 協作設計<br>
+                    <span class="text-2xl md:text-3xl text-slate-300 font-medium mt-6 block tracking-tight italic">AI Collaborative</span>
+                </h2>
+            </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div onclick="openDetail('mirror-detail')" class="group relative bg-white/60 backdrop-blur-xl border border-white p-10 rounded-[48px] shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(59,130,246,0.1)] hover:-translate-y-2 transition-all duration-700 cursor-pointer overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="mb-8 overflow-hidden rounded-3xl bg-slate-100 aspect-video shadow-inner">
+                            <img src="ai01.png" alt="Mirror of Mind" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-3xl font-bold text-slate-900 mb-2 tracking-tight">心靈之鏡</h3>
+                        <p class="text-blue-500 font-mono text-xs uppercase tracking-widest mb-6">Mirror of Mind</p>
+                        <p class="text-slate-500 leading-relaxed text-sm font-light">
+                            探索潛意識與 AI 生成的美學交匯點，將無形的思緒轉化為具象的視覺藝術。
+                        </p>
+                    </div>
+                    <div class="absolute bottom-[-20px] right-[-10px] text-9xl font-black text-slate-900/[0.03] italic">01</div>
+                </div>
+    
+                <div onclick="openDetail('parasite-detail')" class="group relative bg-white/60 backdrop-blur-xl border border-white p-10 rounded-[48px] shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(16,185,129,0.1)] hover:-translate-y-2 transition-all duration-700 cursor-pointer overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="mb-8 overflow-hidden rounded-3xl bg-slate-100 aspect-video shadow-inner">
+                            <img src="ai21.png" alt="The Digital Parasite" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        </div>
+                        <h3 class="text-3xl font-bold text-slate-900 mb-2 tracking-tight">數位寄生</h3>
+                        <p class="text-emerald-500 font-mono text-xs uppercase tracking-widest mb-6">The Digital Parasite</p>
+                        <p class="text-slate-500 leading-relaxed text-sm font-light">
+                            探討數位時代中資訊與生物性的共生關係，重構人類與算法之間的寄生邊界。
+                        </p>
+                    </div>
+                    <div class="absolute bottom-[-20px] right-[-10px] text-9xl font-black text-slate-900/[0.03] italic">02</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="mirror-detail" class="fixed inset-0 z-[18000] hidden overflow-y-auto bg-white">
+        <button onclick="closeDetail('mirror-detail')" class="fixed top-10 right-10 text-slate-400 hover:text-blue-600 transition-colors z-[18001] font-mono text-[10px] font-bold tracking-widest px-6 py-2 border border-slate-200 rounded-full bg-white/80 backdrop-blur-md shadow-sm">
+            [ RETURN_TO_SYNERGY ]
+        </button>
+    
+        <div class="relative z-10 max-w-5xl mx-auto py-32 px-8">
+            <div class="mb-20">
+                <h2 class="text-5xl font-bold text-slate-900 mb-10">核心設計理念</h2>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+                    <div class="md:col-span-8 space-y-6">
+                        <p class="text-xl text-slate-600 leading-relaxed font-light">
+                            本作品以<span class="text-slate-900 font-medium">「自我覺醒」</span>為核心理念，旨在探討當代人在焦慮與情感內耗中尋求平靜的過程。風格採用<span class="text-slate-900 font-medium">超現實主義 (Surrealism)</span>，透過夢境構圖將潛意識具象化。
+                        </p>
+                        <p class="text-slate-500 leading-relaxed">
+                            透過「巨大眼睛」、「融化時鐘」與「錯位階梯」等象徵物，反映對外界眼光的在意與對時間失控的恐懼。作品旨在引導觀者直面心理困境，在現實與夢境的掙扎中重新尋獲內在覺醒。
+                        </p>
+                    </div>
+                    <div class="md:col-span-4 flex md:justify-end items-end">
+                        <span class="text-9xl font-black text-slate-50/80 italic select-none">2025</span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="mb-24">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-12 border-b border-slate-100 pb-4">象徵元素解析</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-bold text-slate-900">巨大的眼睛<br><span class="text-xs text-blue-500 font-mono uppercase tracking-widest">The Floating Eye</span></h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">象徵對外界評價的敏感與迷失，反映在他人眼光與內在自我之間的焦慮與分裂。</p>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-bold text-slate-900">融化的時鐘<br><span class="text-xs text-blue-500 font-mono uppercase tracking-widest">The Melting Clock</span></h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">象徵時間的流動與不可逆，傳達對失去主控權及生命流逝的深層恐懼。</p>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-bold text-slate-900">錯位空間與階梯<br><span class="text-xs text-blue-500 font-mono uppercase tracking-widest">Dislocated Space & Stairs</span></h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">挑戰現實邏輯，隱喻個體在現實壓力、虛幻夢境與情感內耗間的不斷掙扎。</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="space-y-8">
+                <div class="w-full rounded-[48px] overflow-hidden bg-slate-100 border border-slate-50 shadow-sm">
+                    <img src="ai01.png" alt="Main Visual" class="w-full h-auto block">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="aspect-square rounded-[32px] overflow-hidden bg-slate-100 border border-slate-50 shadow-sm">
+                        <img src="ai02.png" alt="Eye Element" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square rounded-[32px] overflow-hidden bg-slate-100 border border-slate-50 shadow-sm">
+                        <img src="ai03.png" alt="Clock Element" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square rounded-[32px] overflow-hidden bg-slate-100 border border-slate-50 shadow-sm">
+                        <img src="ai04.png" alt="Stairs Element" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="parasite-detail" class="fixed inset-0 z-[18000] hidden overflow-y-auto bg-slate-50">
+        <button onclick="closeDetail('parasite-detail')" class="fixed top-10 right-10 text-slate-400 hover:text-emerald-600 transition-colors z-[18001] font-mono text-[10px] font-bold tracking-widest px-6 py-2 border border-slate-200 rounded-full bg-white/80 backdrop-blur-md shadow-sm">
+            [ RETURN_TO_SYNERGY ]
+        </button>
+    
+        <div class="relative z-10 max-w-6xl mx-auto py-32 px-8">
+            <div class="mb-20 border-b border-slate-100 pb-16">
+                <p class="font-mono text-xl text-emerald-600 tracking-tight mb-4">"Connected to everything, attached to nothing"</p>
+                <h2 class="text-5xl font-black text-slate-900 tracking-tighter mb-10">數位寄生 / The Digital Parasite</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+                    <div class="md:col-span-8 space-y-6 text-slate-600 leading-relaxed font-light">
+                        <p class="text-xl text-slate-800">
+                            本作品結合<span class="font-bold text-slate-900 underline decoration-emerald-300">比亞茲萊的頹廢美學</span>與當代「數位寄生」現象，反映感官與現實斷裂的異化現狀。
+                        </p>
+                        <p>
+                            核心標語「Connected to everything, attached to nothing」深刻傳達出數位連結雖無處不
+                            在，其本質卻脆弱且缺乏溫度的冷峻寂寞。視覺上將植物蔓藤轉化為<span class="font-bold text-slate-900">「數據傳輸線」</span>。透過人物手持手機遮蔽雙眼的怪誕肢體，具象化感官被螢幕劫持的壓抑狀態。
+                        </p>
+                    </div>
+                    <div class="md:col-span-4 bg-white p-8 rounded-3xl border border-slate-100 shadow-inner">
+                        <h4 class="text-sm font-bold text-slate-900 uppercase font-mono tracking-widest mb-4 border-b pb-2">Aesthetic Focus</h4>
+                        <ul class="space-y-2 text-sm text-slate-600 list-disc list-inside">
+                            <li>Decadent Aesthetics</li>
+                            <li>Black & White High Contrast</li>
+                            <li>Data vines / 數據蔓藤</li>
+                            <li>Screen Hijacking / 螢幕劫持</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="md:col-span-2 md:row-span-2 rounded-[40px] overflow-hidden bg-white border border-slate-100 shadow-lg p-3">
+                    <div class="w-full h-full rounded-[32px] overflow-hidden bg-slate-950">
+                        <img src="ai21.png" alt="Parasite Main Visual" class="w-full h-full object-cover block">
+                    </div>
+                </div>
+                
+                <div class="aspect-[4/3] rounded-[32px] overflow-hidden bg-white border border-slate-100 shadow-md p-2">
+                    <img src="ai22.png" alt="怪誕肢體" class="w-full h-full object-cover rounded-[24px]">
+                </div>
+    
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="aspect-square rounded-[24px] overflow-hidden bg-slate-950 border border-slate-800">
+                        <img src="ai23.png" alt="黑白線條" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square rounded-[24px] overflow-hidden bg-white border border-slate-100 shadow-inner p-1">
+                        <img src="ai24.png" alt="數據傳輸線" class="w-full h-full object-cover rounded-[20px]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 夢境轉場敘渦 -->
+    <div id="dream-vortex">
+        <div class="text-white text-4xl font-bold tracking-[0.5em] animate-pulse">ENTERING PROJECT...</div>
+    </div>
+
+    <!-- 夢境內容層 -->
+    <div id="dream-content" class="dream-content-overlay">
+        <button onclick="closeOverlay('dream-content')" class="fixed top-10 right-10 text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white hover:text-black transition z-[10002] font-bold">BACK TO REALITY</button>
+        <div class="max-w-4xl mx-auto py-20 flex flex-col min-h-screen">
+            <div class="relative mb-12">
+                <h2 class="text-7xl md:text-8xl font-bold bg-gradient-to-r from-indigo-300 via-purple-400 to-pink-300 bg-clip-text text-transparent">Dreamixx</h2>
+                <span class="text-indigo-300/50 text-sm tracking-[0.6em] font-bold ml-2">SOUND OF DREAMS</span>
+            </div>
+            <div class="text-2xl text-indigo-100/80 mb-16 space-y-8 leading-relaxed max-w-3xl">
+                <p>在數位科技長時間介入日常的情況下，許多人的睡眠品質逐漸失衡。然而現有的睡眠相關產品多著重於數據紀錄與分析，較少關注夢境所承載的情緒與心理狀態。</p>
+                <p>Dreamixx 是一款轉譯夢境情緒的音樂生成 App，將睡眠數據轉化為直觀的聽覺體驗。使用者透過音樂即可感知內在狀態，在數據與情感間建立橋樑，讓夢境成為可被分享的個人紀錄。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    
+                <div class="aspect-square bg-indigo-900/30 rounded-[40px] border border-white/10 relative overflow-hidden group backdrop-blur-md shadow-2xl">
+                    <img 
+                        src="3333.png" 
+                        alt="Dreamixx Project Preview" 
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    >
+            
+                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/20 to-transparent pointer-events-none"></div>
+                </div>
+            
+                <div class="space-y-8">
+                    <div>
+                        <h4 class="text-indigo-300 font-bold mb-2">想了解更多？</h4>
+                        <p class="text-sm text-indigo-100/50">點擊下方按鈕，解鎖關於夢境音訊轉譯的完整設計研究與專案展示。</p>
+                    </div>
+                    <a href="https://www.figma.com/proto/VKLI3gd6FT27zWxTqtBC9W/Untitled?node-id=1-2&p=f&t=6H9gC641DxVmJbw7-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2" target="_blank" class="block group relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                        <div class="relative px-8 py-6 bg-slate-900 ring-1 ring-white/10 rounded-2xl leading-none flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+                                <div class="space-y-1">
+                                    <p class="text-indigo-100 font-bold">VIEW PROTOTYPE</p>
+                                    <p class="text-indigo-400/60 text-xs">Figma Interactive Design</p>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-indigo-100 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 華航專案內容層 -->
+    <div id="china-airlines-content" class="project-overlay">
+        <button onclick="closeOverlay('china-airlines-content')" class="fixed top-10 right-10 text-white border border-white/30 px-6 py-2 rounded-full hover:bg-white hover:text-black transition z-[10002] font-bold">CLOSE PROJECT</button>
+        <div class="max-w-4xl mx-auto py-20 flex flex-col min-h-screen">
+            <div class="relative mb-12">
+                <h2 class="text-7xl md:text-8xl font-bold bg-gradient-to-r from-blue-300 via-sky-400 to-indigo-300 bg-clip-text text-transparent">China Airlines App</h2>
+                <span class="text-sky-300/50 text-sm tracking-[0.6em] font-bold ml-2">中華航空 App</span>
+            </div>
+            
+            <div class="text-2xl text-sky-100/80 mb-16 space-y-8 leading-relaxed max-w-3xl">
+                <p>身為中華航空的長期使用者，我觀察到現有介面在操作流暢度仍有提升空間。本次專案以改善使用者體驗為核心，除了優化基礎視覺層級，更針對旅客旅途中的不確定性，重新梳理訂票與登機的工作流。</p>
+                <p>專案新增了協助旅客定位的 AR 實境導航、緩解焦慮的行李追蹤系統，以及機上娛樂預覽功能。透過這些數位整合，我致力於消除旅程中的資訊落差，打造更加直覺、安心的智慧飛行體驗。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-16">
+                <div class="bg-white/5 p-10 rounded-[40px] border border-white/10 hover:bg-white/10 transition-colors h-full">
+                    <h4 class="text-sky-300 font-bold mb-8 text-2xl tracking-wider flex items-center">
+                        <span class="mr-4 text-3xl">⚠️</span> Problem
+                    </h4>
+                    <ul class="space-y-6 text-sky-100/80">
+                        <li class="flex items-center space-x-4">
+                            <span class="w-2 h-2 bg-sky-400 rounded-full"></span>
+                            <span class="text-xl">視覺風格優化</span>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <span class="w-2 h-2 bg-sky-400 rounded-full"></span>
+                            <span class="text-xl">資訊密度過高</span>
+                        </li>
+                        
+                        <li class="flex items-center space-x-4">
+                            <span class="w-2 h-2 bg-sky-400 rounded-full"></span>
+                            <span class="text-xl">即時回饋機制</span>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <span class="w-2 h-2 bg-sky-400 rounded-full"></span>
+                            <span class="text-xl">關鍵功能喪失</span>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <span class="w-2 h-2 bg-sky-400 rounded-full"></span>
+                            <span class="text-xl">邏輯漏洞修補</span>
+                        </li>
+                        
+                    </ul>
+                </div>
+
+                <div class="bg-blue-600/10 p-10 rounded-[40px] border border-blue-400/20 hover:bg-blue-600/20 transition-colors h-full">
+                    <h4 class="text-sky-300 font-bold mb-8 text-2xl tracking-wider flex items-center">
+                        <span class="mr-4 text-3xl">💡</span> Solve
+                    </h4>
+                    <ul class="space-y-6 text-sky-100/80">
+                        <li class="flex items-center space-x-4">
+                            <span class="w-2 h-2 bg-sky-300 rounded-full"></span>
+                            <span class="text-xl">視覺風格精煉</span>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <span class="w-2 h-2 bg-sky-300 rounded-full"></span>
+                            <span class="text-xl">資訊層級重構</span>
+                        </li>
+                    
+                        <li class="flex items-center space-x-4">
+                            <span class="w-2 h-2 bg-sky-300 rounded-full"></span>
+                            <span class="text-xl">回饋引導優化</span>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <span class="w-2 h-2 bg-sky-300 rounded-full"></span>
+                            <span class="text-xl">高頻功能前置</span>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <span class="w-2 h-2 bg-sky-300 rounded-full"></span>
+                            <span class="text-xl">安全性與便利平衡</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
+    
+                <div class="relative group overflow-hidden rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl">
+                    <img 
+                        src="1.png" 
+                        alt="Design Preview" 
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-950/40 to-transparent pointer-events-none"></div>
+                </div>
+            
+                <a href="https://www.figma.com/proto/ngFiIlYTbDfKEUzxjx5wrD/Untitled?node-id=1-2&p=f&t=NoWV77QVhgLnZnrL-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1" target="_blank" class="group relative overflow-hidden rounded-[40px] bg-white/5 border border-white/10 p-10 md:p-12 flex flex-col justify-center transition-all hover:bg-white/[0.08]">
+                    <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-sky-400 blur-xl opacity-10 group-hover:opacity-30 transition duration-1000"></div>
+                    
+                    <div class="relative">
+                        <h5 class="text-3xl font-bold text-white mb-4">探索完整設計細節</h5>
+                        <p class="text-sky-100/50 text-xl leading-relaxed mb-10">
+                            查看完整的 Figma 互動原型、UI 組件庫以及詳細的使用者研究報告。
+                        </p>
+                        
+                        <div class="inline-block bg-blue-600 px-10 py-5 rounded-2xl text-white font-black tracking-widest group-hover:bg-blue-500 transition-all hover:scale-105 shadow-lg shadow-blue-900/40">
+                            VIEW FULL PROJECT
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 背景轉場元件 -->
+    <div id="coffee-splash"></div>
+
+    <div id="custom-cursor">
+        <svg id="cursor-svg" width="40" height="40" viewBox="0 0 100 100">
+            <path id="steam-path-1" d="M30 80 Q20 60 40 40 T30 10" fill="none" stroke="#8D6E63" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+            <path id="steam-path-2" d="M50 85 Q40 65 60 45 T50 15" fill="none" stroke="#5D4037" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+            <path id="steam-path-3" d="M70 80 Q60 60 80 40 T70 10" fill="none" stroke="#8D6E63" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+    </div>
+
+    
+
+    <nav class="fixed top-8 z-50 flex justify-center w-full px-4">
+        <div class="nav-pill flex space-x-12 items-center">
+            <a href="#about-section" class="hover:text-amber-800 transition font-bold" id="nav-about">關於我</a>
+            <a href="#uiux-section" class="hover:text-amber-800 transition font-bold" id="nav-works">作品集</a>
+            <a href="#contact-section" class="hover:text-amber-800 transition font-bold" id="nav-contact">聯絡方式</a>
+        </div>
+    </nav>
+
+    <div class="hero-section" id="hero-top">
+        
+        <div class="floating-element top-[5%] left-[5%]" style="animation-delay: 0s;">
+            <div class="big-bean-container" id="bean-container-about" onclick="scrollToAbout()"></div>
+        </div>
+       
+        <div class="floating-element top-[40%] left-[5%]" style="animation-delay: -1.5s;">
+            <div class="big-bean-container" id="bean-container-uiux" onclick="transitionToUIUX()"></div>
+        </div>
+        <div class="floating-element top-[80%] left-[5%]" style="animation-delay: -3s;">
+            <div class="big-bean-container" id="bean-container-graphic" onclick="enterGraphicProject()"></div>
+        </div>
+        <div class="floating-element top-[5%] right-[5%]" style="animation-delay: -0.5s;">
+            <div class="big-bean-container" id="bean-container-3d" onclick="enterThreeDProject()"></div>
+        </div>
+        <div class="floating-element top-[80%] right-[5%]" style="animation-delay: -2s;">
+            <div class="big-bean-container" id="bean-container-prog" onclick="enterProgrammingProject()"></div>
+        </div>
+        <div class="floating-element top-[40%] right-[5%]" style="animation-delay: -4s;">
+            <div class="big-bean-container" id="bean-container-ai" onclick="enterAIProject()"></div>
+        </div>
+
+        <div class="main-canvas-wrapper">
+            <main class="main-canvas" id="hero-canvas">
+                <div class="inner-frame">
+                    <div class="mb-4 text-gray-300 text-sm tracking-[0.3em] uppercase font-bold">April 30, 2026</div>
+                    <div class="coffee-character mb-8">
+                        <svg width="160" height="160" viewBox="0 0 200 200">
+                            <ellipse cx="100" cy="160" rx="60" ry="12" fill="#E0E0E0" opacity="0.5"/>
+                            <path d="M145 90 Q170 90 170 115 T145 140" fill="none" stroke="#FCE4EC" stroke-width="12" stroke-linecap="round"/>
+                            <path d="M50 70 Q50 60 60 60 H140 Q150 60 150 70 V130 Q150 155 100 155 T50 130 Z" fill="#FFFBFA" stroke="#F8BBD0" stroke-width="2"/>
+                            <ellipse cx="100" cy="65" rx="45" ry="8" fill="#5D4037"/>
+                            <circle cx="80" cy="110" r="4" fill="#3E2723"/>
+                            <circle cx="120" cy="110" r="4" fill="#3E2723"/>
+                        </svg>
+                    </div>
+                    <div class="text-center">
+                        <p id="hero-sub" class="text-2xl md:text-4xl text-amber-900 font-bold mb-1">嗨，你好 我是黃于芳</p>
+                        <p id="hero-corner" class="text-lg md:text-xl text-amber-800/60 font-medium mb-8">歡迎來到我的小創意角落</p>
+                        <h1 id="hero-title" class="text-7xl md:text-9xl xl:text-[9rem] font-bold uppercase tracking-tighter text-stone-900 leading-[0.85]">Port<br>folio</h1>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- 關於我區塊 -->
+    <section class="section-about" id="about-section">
+        <div class="flip-card" id="interactive-card">
+            <div class="flip-card-front">
+                <h2 class="text-6xl font-bold mb-10 text-stone-900" id="about-title">關於我</h2>
+                <div class="text-xl md:text-2xl text-stone-600 leading-relaxed max-w-4xl text-center space-y-6 px-4" id="about-content"></div>
+                <div class="mt-20">
+                    <span id="guide-flip-back" class="text-lg text-gray-400 font-bold tracking-widest uppercase">翻看詳細資料 →</span>
+                </div>
+            </div>
+            <div class="flip-card-back">
+                <div class="back-grid">
+                    <div class="space-y-12">
+                        <div>
+                            <h3 class="back-section-title font-black text-amber-900 flex items-center">
+                                <span class="mr-4 text-4xl">🎓</span> <span id="back-edu-title">教育背景</span>
+                            </h3>
+                            <div class="space-y-8">
+                                <div class="edu-item">
+                                    <p class="item-main-text font-black text-stone-900" id="edu-1-main">元智大學 (Yuan Ze University)</p>
+                                    <p class="item-sub-text font-black" id="edu-1-sub">資訊傳播系 (Department of Information and Communication) | 2023 - 至今</p>
+                                </div>
+                                <div class="edu-item">
+                                    <p class="item-main-text font-black text-stone-900" id="edu-2-main">檳城日新中學 (Jit Sin High School)</p>
+                                    <p class="item-sub-text font-black" id="edu-2-sub">理科班 (Science Stream)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="back-section-title font-black text-amber-900 flex items-center">
+                                <span class="mr-4 text-4xl">🏆</span> <span id="back-exp-title">個人經歷</span>
+                            </h3>
+                            <div class="space-y-8">
+                                <div class="exp-item">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <div class="flex-1 pr-4">
+                                            <p class="item-main-text font-black text-stone-900" id="exp-1-main">第 22 屆育秀盃 | 入圍</p>
+                                            <p class="item-sub-text font-black" id="exp-1-sub">The 22nd Y.S. Award | Shortlisted</p>
+                                        </div>
+                                        <span class="item-date-tag bg-amber-100 text-amber-800">2025</span>
+                                    </div>
+                                    <p class="item-desc-text" id="exp-1-desc">參與團隊 UI/UX 專案</p>
+                                </div>
+                                <div class="exp-item">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <div class="flex-1 pr-4">
+                                            <p class="item-main-text font-black text-stone-900" id="exp-2-main">第 33 屆時報金犢獎 | 參賽</p>
+                                            <p class="item-sub-text font-black" id="exp-2-sub">Times Young Creative Awards</p>
+                                        </div>
+                                        <span class="item-date-tag bg-stone-100 text-stone-800">2024</span>
+                                    </div>
+                                    <p class="item-desc-text" id="exp-2-desc">參與平面設計創業競賽</p>
+                                </div>
+                                <div class="exp-item">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <div class="flex-1 pr-4">
+                                            <p class="item-main-text font-black text-stone-900" id="exp-3-main">TOEIC 多益英語測驗 | 總分：775</p>
+                                            <p class="item-sub-text font-black" id="exp-3-sub">TOEIC Listening & Reading Test | Score: 775</p>
+                                        </div>
+                                    </div>
+                                    <p class="item-desc-text" id="exp-3-desc">具備專業職場環境下有效溝通與獨立閱讀的良好基礎。</p>
+                                </div>
+                                <div class="exp-item">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <div class="flex-1 pr-4">
+                                            <p class="item-main-text font-black text-stone-900" id="exp-4-main">ILCC 英語競賽 | 優選</p>
+                                            <p class="item-sub-text font-black" id="exp-4-sub">Honorable Mention</p>
+                                        </div>
+                                        <span class="item-date-tag bg-blue-50 text-blue-800">2023</span>
+                                    </div>
+                                    <p class="item-desc-text" id="exp-4-desc">參與英語朗讀比賽，以發音與口說表現獲得佳作</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-12">
+                        <div>
+                            <h3 class="back-section-title font-black text-amber-900 flex items-center">
+                                <span class="mr-4 text-4xl">🛠️</span> <span id="back-tech-title">軟件技術</span>
+                            </h3>
+                            
+                            <div class="grid grid-cols-4 gap-4">
+                                <div class="flex flex-col items-center"><div class="skill-icon text-purple-600">Ai</div><div class="skill-name">Adobe<br>Illustrator</div></div>
+                                <div class="flex flex-col items-center"><div class="skill-icon text-blue-600">Ps</div><div class="skill-name">Adobe<br>Photoshop</div></div>
+                                <div class="flex flex-col items-center"><div class="skill-icon text-red-600">Pr</div><div class="skill-name">Adobe<br>Premiere Pro</div></div>
+                                <div class="flex flex-col items-center"><div class="skill-icon text-pink-600">Id</div><div class="skill-name">Adobe<br>InDesign</div></div>
+                                <div class="flex flex-col items-center"><div class="skill-icon text-stone-900">Fg</div><div class="skill-name">Figma</div></div>
+                                <div class="flex flex-col items-center"><div class="skill-icon text-blue-400">Dv</div><div class="skill-name">DaVinci<br>Resolve 21</div></div>
+                                <div class="flex flex-col items-center"><div class="skill-icon text-orange-400">Ma</div><div class="skill-name">Autodesk<br>Maya</div></div>
+                                <div class="flex flex-col items-center"><div class="skill-icon text-orange-600">Bl</div><div class="skill-name">Blender</div></div>
+                            </div>
+                    
+                            <div class="grid grid-cols-2 gap-4 mt-10">
+                                <div class="cert-frame">
+                                    <img src="英文检定.png" alt="獎狀 1" class="cert-img">
+                                    <p class="cert-label">TOEIC 多益英語檢定</p>
+                                </div>
+                                <div class="cert-frame">
+                                    <img src="CamScanner 03-20-2024 15.47_1.jpg" alt="獎狀 2" class="cert-img">
+                                    <p class="cert-label">ILCC 英語競賽</p>
+                                </div>
+                                <div class="cert-frame">
+                                    <img src="WhatsApp Image 2026-04-28 at 21.19.15.jpeg" alt="獎狀 3" class="cert-img">
+                                    <p class="cert-label">113年度傑出僑生獎學金獎狀</p>
+                                </div>
+                                <div class="cert-frame">
+                                    <img src="WhatsApp Image 2026-04-28 at 21.19.14.jpeg" alt="獎狀 4" class="cert-img">
+                                    <p class="cert-label">114年度傑出僑生獎學金獎狀</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- UI/UX 區塊 -->
+    <section class="section-uiux" id="uiux-section">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 px-4">
+                <div>
+                    <h2 class="text-6xl font-bold text-stone-900 mb-4" id="uiux-title">使用者介面設計</h2>
+                    <p class="text-xl text-amber-900/60 font-bold" id="uiux-subtitle">USER INTERFACE & EXPERIENCE DESIGN</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 px-4">
+                <div class="uiux-card p-1 group/card" onclick="enterProject('dream-content')">
+                    <div class="bg-gradient-to-br from-indigo-500 to-purple-600 aspect-[4/3] rounded-[25px] overflow-hidden relative group cursor-pointer">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-20">
+                            <span class="text-white font-bold border-2 border-white px-6 py-2 rounded-full tracking-widest">ENTER DREAM</span>
+                        </div>
+                        <div class="w-full h-full flex flex-col items-center justify-center text-white p-6 text-center">
+                            <div class="text-sm font-bold opacity-80 mb-2">Kitty</div>
+                            <div class="text-xl font-bold mb-4">準備好解鎖昨晚的旋律了嗎?</div>
+                            <div class="bg-white/20 backdrop-blur-md px-4 py-2 rounded-xl text-sm border border-white/30 mb-4">品質分數卡</div>
+                            <div class="text-xs tracking-widest uppercase opacity-60">welcome to Dreamixx</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-3xl font-bold text-stone-900">Dreamixx 夢之音</h3>
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase">團體專案</span>
+                        </div>
+                        <p class="text-stone-600 leading-relaxed line-clamp-3 mb-6">
+                            一款轉譯夢境情緒的音樂生成 App，將睡眠數據轉化為直觀的聽覺體驗，建立數據與情感間的橋樑。
+                        </p>
+                    </div>
+                </div>
+                <div class="uiux-card p-1 group/card" onclick="enterProject('china-airlines-content')">
+                    <div class="bg-gradient-to-br from-blue-500 to-sky-700 aspect-[4/3] rounded-[25px] overflow-hidden relative group cursor-pointer">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-20">
+                            <span class="text-white font-bold border-2 border-white px-6 py-2 rounded-full tracking-widest">VIEW PROJECT</span>
+                        </div>
+                        <div class="w-full h-full flex flex-col p-6 text-white bg-[url('https://images.unsplash.com/photo-1436491865332-7a61a109c05a?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center">
+                            <div class="bg-black/40 absolute inset-0 backdrop-blur-[2px]"></div>
+                            <div class="relative z-10 flex flex-col h-full justify-between">
+                                <div class="flex justify-between items-start">
+                                    <div class="text-2xl font-black italic tracking-tighter">CHINA AIRLINES</div>
+                                    <div class="bg-white/20 px-3 py-1 rounded-full text-[10px]">Premium Class</div>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-end">
+                                        <div>
+                                            <div class="text-4xl font-bold">TPE</div>
+                                        </div>
+                                        <div class="flex-1 border-b border-dashed border-white/50 mx-4 mb-2 relative">
+                                            <svg class="absolute left-1/2 -top-2 -translate-x-1/2 w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-4xl font-bold">PEN</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-3xl font-bold text-stone-900">China Airlines App</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Redesign</span>
+                        </div>
+                        <p class="text-stone-600 leading-relaxed line-clamp-3 mb-6">
+                            針對現有華航 App 進行介面重構與流程優化，旨在提升訂票與登機手續的使用體驗。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<footer class="py-20 bg-stone-900 text-stone-100" id="contact-section">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-12 italic">Contact Me</h2>
+        <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-16">
+            <div class="contact-item">
+                <span class="block text-stone-500 uppercase tracking-widest text-sm mb-2">Phone</span>
+                <a href="tel:+8869XXXXXXXX" class="text-2xl font-medium hover:text-amber-400 transition">+886 976418634</a>
+            </div>
+            <div class="contact-item">
+                <span class="block text-stone-500 uppercase tracking-widest text-sm mb-2">Email</span>
+                <a href="mailto:your@email.com" class="text-2xl font-medium hover:text-amber-400 transition">fanniewong0215@gmail.com</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 你原本的 togglePlay 等功能
+</script>
+    <!-- 邏輯處理 -->
+    <script>
+        function togglePlay() {
+            const video = document.getElementById('work-reel-video');
+            const wrapper = document.getElementById('video-wrapper');
+            const statusText = document.getElementById('video-status-text');
+            const playIcon = document.getElementById('play-button-icon');
+
+            if (video.paused) {
+                video.play();
+                wrapper.classList.add('is-playing');
+                statusText.innerText = "PAUSE";
+                playIcon.innerHTML = '<svg class="w-10 h-10 fill-white" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+            } else {
+                video.pause();
+                wrapper.classList.remove('is-playing');
+                statusText.innerText = "RESUME";
+                playIcon.innerHTML = '<svg class="w-10 h-10 fill-white ml-2" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+            }
+        }
+
+        const video = document.getElementById('work-reel-video');
+        const progressBar = document.getElementById('video-progress');
+        video.ontimeupdate = () => {
+            const progress = (video.currentTime / video.duration) * 100;
+            progressBar.style.width = `${progress}%`;
+        };
+
+        function getRealisticBeanSVG(text, id) {
+            const beanId = `bean-grad-${id}`;
+            return `
+                <div class="bean-text">${text}</div>
+                <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                    <defs><radialGradient id="${beanId}" cx="40%" cy="40%" r="60%"><stop offset="0%" style="stop-color:#8D6E63" /><stop offset="40%" style="stop-color:#5D4037" /><stop offset="100%" style="stop-color:#3E2723" /></radialGradient></defs>
+                    <path d="M20 70C20 30 60 10 100 10C140 10 180 30 180 70C180 110 140 130 100 130C60 130 20 110 20 70Z" fill="url(#${beanId})" stroke="#21120d" stroke-width="1"/>
+                </svg>`;
+        }
+
+        function scrollToAbout() {
+            const section = document.getElementById('about-section');
+            if (section) section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function transitionToUIUX() {
+            const splash = document.getElementById('coffee-splash');
+            const targetSection = document.getElementById('uiux-section');
+            splash.classList.add('active');
+            setTimeout(() => {
+                targetSection.scrollIntoView({ behavior: 'auto' });
+                setTimeout(() => { splash.classList.remove('active'); }, 400);
+            }, 800);
+        }
+
+        function enterGraphicProject() {
+            const vortex = document.getElementById('graphic-vortex');
+            const content = document.getElementById('graphic-content');
+            vortex.classList.add('active');
+            setTimeout(() => {
+                content.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }, 600);
+            setTimeout(() => { vortex.classList.remove('active'); }, 1200);
+        }
+
+        function enterThreeDProject() {
+            const vortex = document.getElementById('three-d-vortex');
+            const page = document.getElementById('three-d-page');
+            vortex.classList.add('active');
+            setTimeout(() => {
+                page.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }, 800);
+            setTimeout(() => { vortex.classList.remove('active'); }, 1500);
+        }
+
+        function enterProgrammingProject() {
+            const vortex = document.getElementById('programming-vortex');
+            const page = document.getElementById('programming-page');
+            vortex.classList.add('active');
+            setTimeout(() => {
+                page.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }, 600);
+            setTimeout(() => { vortex.classList.remove('active'); }, 1200);
+        }
+
+        function enterAIProject() {
+            const vortex = document.getElementById('ai-vortex');
+            const page = document.getElementById('ai-page');
+            vortex.classList.add('active');
+            setTimeout(() => {
+                page.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }, 800);
+            setTimeout(() => { vortex.classList.remove('active'); }, 1500);
+        }
+
+        function enterProject(contentId) {
+            const vortex = document.getElementById('dream-vortex');
+            const content = document.getElementById(contentId);
+            const isChinaAirlines = contentId === 'china-airlines-content';
+            const isDream = contentId === 'dream-content';
+            vortex.classList.remove('blue-mode');
+            if(isDream) {
+                document.body.classList.add('dream-mode');
+                document.getElementById('steam-path-1').setAttribute('stroke', '#c084fc');
+                document.getElementById('steam-path-2').setAttribute('stroke', '#a855f7');
+                document.getElementById('steam-path-3').setAttribute('stroke', '#c084fc');
+            } else if (isChinaAirlines) {
+                vortex.classList.add('blue-mode');
+                document.getElementById('steam-path-1').setAttribute('stroke', '#7dd3fc');
+                document.getElementById('steam-path-2').setAttribute('stroke', '#38bdf8');
+                document.getElementById('steam-path-3').setAttribute('stroke', '#7dd3fc');
+            }
+            vortex.classList.add('active');
+            setTimeout(() => {
+                content.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }, 800);
+            setTimeout(() => { vortex.classList.remove('active'); }, 1500);
+        }
+
+        function closeOverlay(contentId) {
+            const content = document.getElementById(contentId);
+            content.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.body.classList.remove('dream-mode');
+            document.getElementById('steam-path-1').setAttribute('stroke', '#8D6E63');
+            document.getElementById('steam-path-2').setAttribute('stroke', '#5D4037');
+            document.getElementById('steam-path-3').setAttribute('stroke', '#8D6E63');
+            if(contentId === 'three-d-page') {
+                const video = document.getElementById('work-reel-video');
+                if(!video.paused) togglePlay();
+            }
+        }
+
+        function setLanguage(lang) {
+            const btnEn = document.getElementById('lang-en');
+            const btnZh = document.getElementById('lang-zh');
+            btnEn.classList.toggle('active', lang === 'en');
+            btnZh.classList.toggle('active', lang === 'zh');
+            updateContent(lang);
+        }
+
+        function updateContent(lang) {
+            const zhIntro = `
+                <div class="space-y-6 text-left md:text-center">
+                    <p class="font-bold text-stone-900 text-3xl mb-4">我叫黃于芳，來自馬來西亞，現就讀於元智大學資訊傳播系大三。</p>
+                    <p>具備 UI/UX 專案實作經驗，擅長將設計思維轉化為具邏輯性的介面原型，並熟悉 Figma 設計系統與 UI Kit 規範建立。同時具備 HTML/CSS 基礎與跨語言溝通能力。</p>
+                </div>
+            `;
+            const enIntro = `
+                <div class="space-y-6 text-left md:text-center">
+                    <p class="font-bold text-stone-900 text-3xl mb-4">I'm Yufang Wong from Malaysia, currently a junior at Yuan Ze University.</p>
+                    <p>With UI/UX project experience, I excel at turning design thinking into logical prototypes and am skilled in building Figma design systems.</p>
+                </div>
+            `;
+            const data = {
+                'nav-about': lang === 'en' ? "About" : "關於我",
+                'nav-works': lang === 'en' ? "Works" : "作品集",
+                'about-title': lang === 'en' ? "About Me" : "關於我",
+                'about-content': lang === 'en' ? enIntro : zhIntro,
+                'back-edu-title': lang === 'en' ? "Education" : "教育背景",
+                'back-exp-title': lang === 'en' ? "Experience" : "個人經歷",
+                'back-tech-title': lang === 'en' ? "Software Skills" : "軟件技術",
+                'uiux-title': lang === 'en' ? "UI/UX Design" : "使用者介面設計",
+                'guide-flip-back': lang === 'en' ? "Details →" : "翻看詳細資料 →",
+                'beans': {
+                    'about': lang === 'en' ? "About" : "關於我", 'uiux': "UI/UX",
+                    'graphic': lang === 'en' ? "Graphic" : "平面", '3d': "3D",
+                    'prog': lang === 'en' ? "Code" : "程式", 'ai': "AI"
+                }
+            };
+            document.getElementById('nav-about').innerText = data['nav-about'];
+            document.getElementById('nav-works').innerText = data['nav-works'];
+            document.getElementById('about-title').innerText = data['about-title'];
+            document.getElementById('about-content').innerHTML = data['about-content'];
+            document.getElementById('back-edu-title').innerText = data['back-edu-title'];
+            document.getElementById('back-exp-title').innerText = data['back-exp-title'];
+            document.getElementById('back-tech-title').innerText = data['back-tech-title'];
+            document.getElementById('uiux-title').innerText = data['uiux-title'];
+            document.getElementById('guide-flip-back').innerText = data['guide-flip-back'];
+            Object.keys(data.beans).forEach(key => {
+                const container = document.getElementById(`bean-container-${key}`);
+                if(container) container.innerHTML = getRealisticBeanSVG(data.beans[key], key);
+            });
+        }
+
+        window.onload = () => {
+            updateContent('zh');
+            const cursor = document.getElementById('custom-cursor');
+            const heroCanvas = document.getElementById('hero-canvas');
+            const aboutCard = document.getElementById('interactive-card');
+            document.addEventListener('mousemove', (e) => {
+                const x = e.clientX;
+                const y = e.clientY;
+                cursor.style.left = x + 'px';
+                cursor.style.top = y + 'px';
+                const heroRect = heroCanvas.getBoundingClientRect();
+                const centerX = heroRect.left + heroRect.width / 2;
+                const centerY = heroRect.top + heroRect.height / 2;
+                const rotateX = -(y - centerY) / 40; 
+                const rotateY = (x - centerX) / 50;
+                if (y < window.innerHeight) {
+                    heroCanvas.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                }
+                const cardRect = aboutCard.getBoundingClientRect();
+                if (y >= cardRect.top && y <= cardRect.bottom && x >= cardRect.left && x <= cardRect.right) {
+                    if (x < cardRect.left + cardRect.width / 2) {
+                        aboutCard.classList.add('is-flipped');
+                    } else {
+                        aboutCard.classList.remove('is-flipped');
+                    }
+                }
+            });
+        };
+
+        /**
+ * AI 頁面導覽邏輯
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const backBtn = document.getElementById('btn-back');
+    const aiPage = document.getElementById('ai-page');
+    const aiVortex = document.getElementById('ai-vortex');
+
+    // 1. [ BACK ] 按鈕點擊事件
+    if (backBtn) {
+        backBtn.addEventListener('click', function() {
+            console.log("Navigating back to main site...");
+            
+            // 執行關閉動畫或直接隱藏
+            hideAILayers();
+            
+            // 恢復網頁捲動
+            enableMainScroll();
+        });
+    }
+
+    /**
+     * 隱藏所有 AI 相關圖層
+     */
+    function hideAILayers() {
+        const layers = [aiPage, aiVortex];
+        layers.forEach(el => {
+            if (el) {
+                el.classList.add('hidden');
+                el.style.display = 'none'; // 強制隱藏
+            }
+        });
+    }
+
+    /**
+     * 恢復主頁面捲動條
+     */
+    function enableMainScroll() {
+        document.body.style.overflow = 'auto';
+        document.documentElement.style.overflow = 'auto';
+    }
+
+    /**
+     * 供外部呼叫：開啟 AI 頁面 (範例)
+     */
+    window.openAIPage = function() {
+        if (aiPage) {
+            aiPage.classList.remove('hidden');
+            aiPage.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // 鎖定主頁捲動
+        }
+    };
+});
+
+/**
+ * AI 協作設計頁面導覽邏輯
+ */
+
+/**
+ * 1. 回到主網站首頁
+ * 隱藏 AI Page 與 Vortex 動畫，並恢復頁面捲動
+ */
+ function goBack() {
+    const aiPage = document.getElementById('ai-page');
+    const aiVortex = document.getElementById('ai-vortex');
+    
+    if (aiPage) {
+        aiPage.classList.add('hidden');
+        aiPage.style.display = 'none';
+    }
+    if (aiVortex) {
+        aiVortex.classList.add('hidden');
+        aiVortex.style.display = 'none';
+    }
+    
+    // 恢復網頁捲動
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
+}
+
+/**
+ * 2. 開啟詳細作品頁
+ * @param {string} id - 詳細頁的 HTML ID (例如 'mirror-detail')
+ */
+function openDetail(id) {
+    const detailEl = document.getElementById(id);
+    if (detailEl) {
+        detailEl.classList.remove('hidden');
+        detailEl.style.display = 'block';
+        // 鎖定主層捲動，避免背景跟著滑動
+        document.getElementById('ai-page').style.overflow = 'hidden';
+    } else {
+        console.warn("[Navigation] 無法找到指定的詳細頁 ID: " + id);
+    }
+}
+
+/**
+ * 3. 關閉詳細作品頁，回到 AI 清單
+ * @param {string} id - 詳細頁的 HTML ID
+ */
+function closeDetail(id) {
+    const detailEl = document.getElementById(id);
+    if (detailEl) {
+        detailEl.classList.add('hidden');
+        detailEl.style.display = 'none';
+        // 恢復 AI 主頁面的捲動
+        document.getElementById('ai-page').style.overflow = 'auto';
+    }
+}
+
+/**
+ * AI 協作頁面導覽邏輯
+ */
+
+/**
+ * 1. 回到主網站首頁 (關閉 AI Page)
+ */
+ function goBack() {
+    const aiPage = document.getElementById('ai-page');
+    const aiVortex = document.getElementById('ai-vortex');
+    const mirrorDetail = document.getElementById('mirror-detail');
+
+    // 關閉所有可能的疊加層
+    [aiPage, aiVortex, mirrorDetail].forEach(el => {
+        if (el) {
+            el.classList.add('hidden');
+            el.style.display = 'none';
+        }
+    });
+
+    // 恢復網頁最底層捲動
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
+}
+
+/**
+ * 2. 開啟詳細頁 (從列表點入內容)
+ */
+function openDetail(id) {
+    const detailEl = document.getElementById(id);
+    const aiPage = document.getElementById('ai-page');
+
+    if (detailEl) {
+        detailEl.classList.remove('hidden');
+        detailEl.style.display = 'block';
+        
+        // 鎖定 AI 列表頁捲動，避免滑動詳細頁時背景跟著動
+        if (aiPage) aiPage.style.overflow = 'hidden';
+        
+        // 詳細頁置頂
+        detailEl.scrollTop = 0;
+    }
+}
+
+/**
+ * 3. 關閉詳細頁 (回到 AI 選擇列表)
+ */
+function closeDetail(id) {
+    const detailEl = document.getElementById(id);
+    const aiPage = document.getElementById('ai-page');
+
+    if (detailEl) {
+        detailEl.classList.add('hidden');
+        detailEl.style.display = 'none';
+        
+        // 恢復 AI 列表頁捲動
+        if (aiPage) aiPage.style.overflow = 'auto';
+    }
+}
+
+
+    </script>
+</body>
+</html>
