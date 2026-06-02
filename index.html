@@ -710,7 +710,7 @@
 
 
 
-/* ✅ 放在 CSS 檔案的最上方 */
+        /* ✅ 放在 CSS 檔案的最上方 */
 html {
     scroll-behavior: smooth;
 }
@@ -1097,7 +1097,6 @@ html {
             document.body.style.overflow = 'auto';
         }
     </script>
-    </script>
     <!-- AI 作品展示頁面 -->
     <div id="ai-vortex" class="fixed inset-0 z-[17000] bg-white/90 backdrop-blur-xl flex items-center justify-center overflow-hidden hidden">
         <div class="absolute inset-0">
@@ -1312,19 +1311,24 @@ html {
                         <h4 class="text-indigo-300 font-bold mb-2">想了解更多？</h4>
                         <p class="text-sm text-indigo-100/50">點擊下方按鈕，解鎖關於夢境音訊轉譯的完整設計研究與專案展示。</p>
                     </div>
-                    <a href="https://www.figma.com/proto/VKLI3gd6FT27zWxTqtBC9W/Untitled?node-id=1-2&p=f&t=6H9gC641DxVmJbw7-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2" target="_blank" class="block group relative">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                        <div class="relative px-8 py-6 bg-slate-900 ring-1 ring-white/10 rounded-2xl leading-none flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
-                                <div class="space-y-1">
-                                    <p class="text-indigo-100 font-bold">VIEW PROTOTYPE</p>
-                                    <p class="text-indigo-400/60 text-xs">Figma Interactive Design</p>
-                                </div>
-                            </div>
-                            <svg class="w-5 h-5 text-indigo-100 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-                        </div>
-                    </a>
+                    <button onclick="openFigmaPrototype()" 
+        class="block group relative w-full text-left">
+    <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+    <div class="relative px-8 py-6 bg-slate-900 ring-1 ring-white/10 rounded-2xl leading-none flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+            <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+            </svg>
+            <div class="space-y-1">
+                <p class="text-indigo-100 font-bold">VIEW PROTOTYPE</p>
+                <p class="text-indigo-400/60 text-xs">Figma Interactive Design</p>
+            </div>
+        </div>
+        <svg class="w-5 h-5 text-indigo-100 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+        </svg>
+    </div>
+</button>
                 </div>
             </div>
             </div>
@@ -1417,20 +1421,21 @@ html {
                     <div class="absolute inset-0 bg-gradient-to-t from-blue-950/40 to-transparent pointer-events-none"></div>
                 </div>
             
-                <a href="https://www.figma.com/proto/ngFiIlYTbDfKEUzxjx5wrD/Untitled?node-id=1-2&p=f&t=NoWV77QVhgLnZnrL-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1" target="_blank" class="group relative overflow-hidden rounded-[40px] bg-white/5 border border-white/10 p-10 md:p-12 flex flex-col justify-center transition-all hover:bg-white/[0.08]">
-                    <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-sky-400 blur-xl opacity-10 group-hover:opacity-30 transition duration-1000"></div>
-                    
-                    <div class="relative">
-                        <h5 class="text-3xl font-bold text-white mb-4">探索完整設計細節</h5>
-                        <p class="text-sky-100/50 text-xl leading-relaxed mb-10">
-                            查看完整的 Figma 互動原型、UI 組件庫以及詳細的使用者研究報告。
-                        </p>
-                        
-                        <div class="inline-block bg-blue-600 px-10 py-5 rounded-2xl text-white font-black tracking-widest group-hover:bg-blue-500 transition-all hover:scale-105 shadow-lg shadow-blue-900/40">
-                            VIEW FULL PROJECT
-                        </div>
-                    </div>
-                </a>
+                <button onclick="openChinaAirlinesFigma()" 
+        class="group relative overflow-hidden rounded-[40px] bg-white/5 border border-white/10 p-10 md:p-12 flex flex-col justify-center transition-all hover:bg-white/[0.08] w-full text-left">
+    <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-sky-400 blur-xl opacity-10 group-hover:opacity-30 transition duration-1000"></div>
+    
+    <div class="relative">
+        <h5 class="text-3xl font-bold text-white mb-4">探索完整設計細節</h5>
+        <p class="text-sky-100/50 text-xl leading-relaxed mb-10">
+            查看完整的 Figma 互動原型、UI 組件庫以及詳細的使用者研究報告。
+        </p>
+        
+        <div class="inline-block bg-blue-600 px-10 py-5 rounded-2xl text-white font-black tracking-widest group-hover:bg-blue-500 transition-all hover:scale-105 shadow-lg shadow-blue-900/40">
+            VIEW FULL PROJECT
+        </div>
+    </div>
+</button>
             </div>
         </div>
     </div>
@@ -1451,7 +1456,7 @@ html {
     <nav class="fixed top-8 z-50 flex justify-center w-full px-4">
         <div class="nav-pill flex space-x-12 items-center">
             <a href="#about-section" class="hover:text-amber-800 transition font-bold" id="nav-about">關於我</a>
-            <a href="#uiux-section" class="hover:text-amber-800 transition font-bold" id="nav-works">作品集</a>
+            <a href="#" class="hover:text-amber-800 transition font-bold" id="nav-works">作品集</a>
             <a href="#contact-section" class="hover:text-amber-800 transition font-bold" id="nav-contact">聯絡方式</a>
         </div>
     </nav>
@@ -1504,8 +1509,19 @@ html {
 
     <!-- 關於我區塊 -->
     <section class="section-about" id="about-section">
+        
         <div class="flip-card" id="interactive-card">
             <div class="flip-card-front">
+                <!-- 新增 Logo 區域（在「關於我」上方） -->
+            <div class="flex justify-center mb-6">
+                <div class="w-36 h-36 md:w-44 md:h-44 bg-white rounded-2xl shadow-lg flex items-center justify-center p-3 border border-stone-100">
+                    <img 
+                        src="2694e3e5-d6e7-44c6-8125-7936c4ab3a95.jpg" 
+                        alt="Yufang Wong Logo" 
+                        class="w-full h-full object-contain"
+                    >
+                </div>
+            </div>
                 <h2 class="text-6xl font-bold mb-10 text-stone-900" id="about-title">關於我</h2>
                 <div class="text-xl md:text-2xl text-stone-600 leading-relaxed max-w-4xl text-center space-y-6 px-4" id="about-content"></div>
                 <div class="mt-20">
@@ -1631,17 +1647,12 @@ html {
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 px-4">
+                <!-- 第一個框（Dreamixx） -->
                 <div class="uiux-card p-1 group/card" onclick="enterProject('dream-content')">
-                    <div class="bg-gradient-to-br from-indigo-500 to-purple-600 aspect-[4/3] rounded-[25px] overflow-hidden relative group cursor-pointer">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-20">
-                            <span class="text-white font-bold border-2 border-white px-6 py-2 rounded-full tracking-widest">ENTER DREAM</span>
-                        </div>
-                        <div class="w-full h-full flex flex-col items-center justify-center text-white p-6 text-center">
-                            <div class="text-sm font-bold opacity-80 mb-2">Kitty</div>
-                            <div class="text-xl font-bold mb-4">準備好解鎖昨晚的旋律了嗎?</div>
-                            <div class="bg-white/20 backdrop-blur-md px-4 py-2 rounded-xl text-sm border border-white/30 mb-4">品質分數卡</div>
-                            <div class="text-xs tracking-widest uppercase opacity-60">welcome to Dreamixx</div>
-                        </div>
+                    <div class="bg-black aspect-[4/3] rounded-[25px] overflow-hidden relative group cursor-pointer">
+                        <img src="f2216f10-e65b-460b-8799-b2f5a525d3c0.jpg" 
+                             alt="Dreamixx Preview" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="p-8">
                         <div class="flex justify-between items-center mb-4">
@@ -1653,33 +1664,13 @@ html {
                         </p>
                     </div>
                 </div>
+
+                <!-- 第二個框（China Airlines） -->
                 <div class="uiux-card p-1 group/card" onclick="enterProject('china-airlines-content')">
-                    <div class="bg-gradient-to-br from-blue-500 to-sky-700 aspect-[4/3] rounded-[25px] overflow-hidden relative group cursor-pointer">
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-20">
-                            <span class="text-white font-bold border-2 border-white px-6 py-2 rounded-full tracking-widest">VIEW PROJECT</span>
-                        </div>
-                        <div class="w-full h-full flex flex-col p-6 text-white bg-[url('https://images.unsplash.com/photo-1436491865332-7a61a109c05a?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center">
-                            <div class="bg-black/40 absolute inset-0 backdrop-blur-[2px]"></div>
-                            <div class="relative z-10 flex flex-col h-full justify-between">
-                                <div class="flex justify-between items-start">
-                                    <div class="text-2xl font-black italic tracking-tighter">CHINA AIRLINES</div>
-                                    <div class="bg-white/20 px-3 py-1 rounded-full text-[10px]">Premium Class</div>
-                                </div>
-                                <div class="space-y-4">
-                                    <div class="flex justify-between items-end">
-                                        <div>
-                                            <div class="text-4xl font-bold">TPE</div>
-                                        </div>
-                                        <div class="flex-1 border-b border-dashed border-white/50 mx-4 mb-2 relative">
-                                            <svg class="absolute left-1/2 -top-2 -translate-x-1/2 w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
-                                        </div>
-                                        <div class="text-right">
-                                            <div class="text-4xl font-bold">PEN</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="bg-black aspect-[4/3] rounded-[25px] overflow-hidden relative group cursor-pointer">
+                        <img src="febde6a1-0add-4218-b36c-cbcf69a96190.jpg" 
+                             alt="China Airlines Preview" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="p-8">
                         <div class="flex justify-between items-center mb-4">
@@ -1694,7 +1685,6 @@ html {
             </div>
         </div>
     </section>
-</section>
 
 <footer class="py-20 bg-stone-900 text-stone-100" id="contact-section">
     <div class="max-w-4xl mx-auto px-4 text-center">
@@ -1711,6 +1701,27 @@ html {
         </div>
     </div>
 </footer>
+
+<!-- Figma Prototype Modal -->
+<div id="figma-modal" class="fixed inset-0 z-[20000] hidden flex-col bg-slate-950/95 backdrop-blur-xl">
+    <div class="w-full h-16 bg-slate-900/90 border-b border-slate-700 flex items-center justify-between px-6 md:px-8">
+        <div class="flex items-center space-x-3">
+            <span id="modal-title" class="text-indigo-400 font-bold">Figma Prototype</span>
+        </div>
+        <button onclick="closeFigmaModal()" 
+                class="text-slate-400 hover:text-white border border-slate-600 hover:border-white px-5 py-2 rounded-xl font-medium transition-all">
+            ✕ CLOSE
+        </button>
+    </div>
+    
+    <div class="flex-1 w-full bg-white relative overflow-hidden">
+        <iframe id="figma-iframe" 
+                src="" 
+                class="w-full h-full border-none" 
+                allowfullscreen>
+        </iframe>
+    </div>
+</div>
 
 <script>
     // 你原本的 togglePlay 等功能
@@ -2103,7 +2114,42 @@ function closeDetail(id) {
     }
 }
 
+// Dreamixx Prototype
+function openFigmaPrototype() {
+    const modal = document.getElementById('figma-modal');
+    const iframe = document.getElementById('figma-iframe');
+    const title = document.getElementById('modal-title');
 
+    iframe.src = "https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/VKLI3gd6FT27zWxTqtBC9W/Untitled?node-id=1-2";    title.textContent = "Dreamixx Prototype";
+
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+
+// China Airlines Prototype
+function openChinaAirlinesFigma() {
+    const modal = document.getElementById('figma-modal');
+    const iframe = document.getElementById('figma-iframe');
+    const title = document.getElementById('modal-title');
+
+    iframe.src = "https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/ngFiIlYTbDfKEUzxjx5wrD/Untitled?node-id=1-2";    title.textContent = "China Airlines App Prototype";
+
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+
+// 關閉 Modal
+function closeFigmaModal() {
+    const modal = document.getElementById('figma-modal');
+    const iframe = document.getElementById('figma-iframe');
+    
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    iframe.src = ''; 
+    document.body.style.overflow = 'auto';
+}
     </script>
 </body>
 </html>
