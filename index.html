@@ -721,6 +721,68 @@ html {
    
 }
 
+/* 圖片點擊放大相關樣式 */
+#image-lightbox {
+    display: none;
+}
+
+.render-image, 
+.uiux-card img, 
+#three-d-page img, 
+#ai-page img, 
+.dream-content-overlay img, 
+.project-overlay img,
+.graphic-content-overlay img {
+    cursor: zoom-in;
+    transition: transform 0.4s ease;
+}
+
+.render-image:hover, 
+.uiux-card img:hover, 
+#three-d-page img:hover, 
+#ai-page img:hover, 
+.dream-content-overlay img:hover, 
+.project-overlay img:hover,
+.graphic-content-overlay img:hover {
+    transform: scale(1.06);
+}
+
+
+@keyframes auroraSlide {
+    0%   { transform: translateY(-30%) skewY(8deg); }
+    100% { transform: translateY(30%) skewY(-8deg); }
+}
+
+
+@keyframes dataFlow {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes scan {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 200px; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-25px); }
+}
+
+@keyframes float-slow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-35px); }
+}
+
+@keyframes float-delay {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-28px); }
+}
+
+@keyframes float-slower {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
 
 
     </style>
@@ -1148,7 +1210,7 @@ html {
     
                 <div onclick="openDetail('parasite-detail')" class="group relative bg-white/60 backdrop-blur-xl border border-white p-10 rounded-[48px] shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(16,185,129,0.1)] hover:-translate-y-2 transition-all duration-700 cursor-pointer overflow-hidden">
                     <div class="relative z-10">
-                        <div class="mb-8 overflow-hidden rounded-3xl bg-slate-100 aspect-video shadow-inner">
+                        <div class="mb-8 overflow-hidden rounded-3xl bg-slate-50 aspect-video shadow-inner">
                             <img src="ai21.png" alt="The Digital Parasite" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
                         </div>
                         <h3 class="text-3xl font-bold text-slate-900 mb-2 tracking-tight">數位寄生</h3>
@@ -1163,25 +1225,40 @@ html {
         </div>
     </div>
     
-    <div id="mirror-detail" class="fixed inset-0 z-[18000] hidden overflow-y-auto bg-white">
-        <button onclick="closeDetail('mirror-detail')" class="fixed top-10 right-10 text-slate-400 hover:text-blue-600 transition-colors z-[18001] font-mono text-[10px] font-bold tracking-widest px-6 py-2 border border-slate-200 rounded-full bg-white/80 backdrop-blur-md shadow-sm">
-            [ RETURN_TO_SYNERGY ]
-        </button>
+    <div id="mirror-detail" class="fixed inset-0 z-[18000] hidden overflow-y-auto bg-[#0a1428] text-slate-100 relative overflow-hidden">
     
-        <div class="relative z-10 max-w-5xl mx-auto py-32 px-8">
+    <!-- 條狀極光層 -->
+    <div class="absolute inset-0 bg-[repeating-linear-gradient(135deg,#0a1428_0px,#0a1428_80px,transparent_80px,transparent_160px)] opacity-80"></div>
+    
+    <!-- 浮動極光條 1 -->
+    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent h-[300%] -top-[100%] animate-[auroraSlide_40s_linear_infinite]"></div>
+    <!-- 浮動極光條 2 -->
+    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-400/25 to-transparent h-[250%] -top-[80%] animate-[auroraSlide_55s_linear_infinite_reverse]"></div>
+    <!-- 浮動極光條 3 -->
+    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent h-[280%] -top-[60%] animate-[auroraSlide_45s_linear_infinite]"></div>
+
+    <button onclick="closeDetail('mirror-detail')" class="fixed top-10 right-10 text-cyan-300 hover:text-white border border-cyan-300/50 px-6 py-2 rounded-full hover:bg-white/10 transition z-[18001] font-mono text-sm font-bold backdrop-blur-md">
+        [ RETURN_TO_SYNERGY ]
+    </button>
+    
+    <div class="relative z-10 max-w-5xl mx-auto py-32 px-8">
+        
+       
+    
+       
             <div class="mb-20">
-                <h2 class="text-5xl font-bold text-slate-900 mb-10">核心設計理念</h2>
+                <h2 class="text-5xl font-bold text-cyan-300 mb-10">核心設計理念</h2>
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
                     <div class="md:col-span-8 space-y-6">
-                        <p class="text-xl text-slate-600 leading-relaxed font-light">
-                            本作品以<span class="text-slate-900 font-medium">「自我覺醒」</span>為核心理念，旨在探討當代人在焦慮與情感內耗中尋求平靜的過程。風格採用<span class="text-slate-900 font-medium">超現實主義 (Surrealism)</span>，透過夢境構圖將潛意識具象化。
+                        <p class="text-xl text-emerald-300 leading-relaxed font-light">
+                            本作品以<span class="text-emerald-300 font-medium">「自我覺醒」</span>為核心理念，旨在探討當代人在焦慮與情感內耗中尋求平靜的過程。風格採用<span class="text-emerald-300 font-medium">超現實主義 (Surrealism)</span>，透過夢境構圖將潛意識具象化。
                         </p>
-                        <p class="text-slate-500 leading-relaxed">
+                        <p class="text-emerald-300 leading-relaxed">
                             透過「巨大眼睛」、「融化時鐘」與「錯位階梯」等象徵物，反映對外界眼光的在意與對時間失控的恐懼。作品旨在引導觀者直面心理困境，在現實與夢境的掙扎中重新尋獲內在覺醒。
                         </p>
                     </div>
                     <div class="md:col-span-4 flex md:justify-end items-end">
-                        <span class="text-9xl font-black text-slate-50/80 italic select-none">2025</span>
+                        <span class="text-9xl font-black text-cyan-300 italic select-none">2025</span>
                     </div>
                 </div>
             </div>
@@ -1190,32 +1267,35 @@ html {
                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-12 border-b border-slate-100 pb-4">象徵元素解析</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                     <div class="space-y-4">
-                        <h4 class="text-lg font-bold text-slate-900">巨大的眼睛<br><span class="text-xs text-blue-500 font-mono uppercase tracking-widest">The Floating Eye</span></h4>
-                        <p class="text-sm text-slate-500 leading-relaxed">象徵對外界評價的敏感與迷失，反映在他人眼光與內在自我之間的焦慮與分裂。</p>
+                        <h4 class="text-lg font-bold text-cyan-300">巨大的眼睛<br><span class="text-xs text-blue-500 font-mono uppercase tracking-widest">The Floating Eye</span></h4>
+                        <p class="text-sm text-emerald-300 leading-relaxed">象徵對外界評價的敏感與迷失，反映在他人眼光與內在自我之間的焦慮與分裂。</p>
                     </div>
                     <div class="space-y-4">
-                        <h4 class="text-lg font-bold text-slate-900">融化的時鐘<br><span class="text-xs text-blue-500 font-mono uppercase tracking-widest">The Melting Clock</span></h4>
-                        <p class="text-sm text-slate-500 leading-relaxed">象徵時間的流動與不可逆，傳達對失去主控權及生命流逝的深層恐懼。</p>
+                        <h4 class="text-lg font-bold text-cyan-300">融化的時鐘<br><span class="text-xs text-blue-500 font-mono uppercase tracking-widest">The Melting Clock</span></h4>
+                        <p class="text-sm text-emerald-300 leading-relaxed">象徵時間的流動與不可逆，傳達對失去主控權及生命流逝的深層恐懼。</p>
                     </div>
                     <div class="space-y-4">
-                        <h4 class="text-lg font-bold text-slate-900">錯位空間與階梯<br><span class="text-xs text-blue-500 font-mono uppercase tracking-widest">Dislocated Space & Stairs</span></h4>
-                        <p class="text-sm text-slate-500 leading-relaxed">挑戰現實邏輯，隱喻個體在現實壓力、虛幻夢境與情感內耗間的不斷掙扎。</p>
+                        <h4 class="text-lg font-bold text-cyan-300">錯位空間與階梯<br><span class="text-xs text-blue-500 font-mono uppercase tracking-widest">Dislocated Space & Stairs</span></h4>
+                        <p class="text-sm text-emerald-300 leading-relaxed">挑戰現實邏輯，隱喻個體在現實壓力、虛幻夢境與情感內耗間的不斷掙扎。</p>
                     </div>
                 </div>
             </div>
     
             <div class="space-y-8">
-                <div class="w-full rounded-[48px] overflow-hidden bg-slate-100 border border-slate-50 shadow-sm">
+                <!-- 主圖白色框 - 透明度50% -->
+                <div class="w-full rounded-[48px] overflow-hidden bg-slate-100/50 backdrop-blur-sm border border-slate-200/70 shadow-sm">
                     <img src="ai01.png" alt="Main Visual" class="w-full h-auto block">
                 </div>
+                
+                <!-- 小圖白色框 - 也同步調整透明度 -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="aspect-square rounded-[32px] overflow-hidden bg-slate-100 border border-slate-50 shadow-sm">
+                    <div class="aspect-square rounded-[32px] overflow-hidden bg-slate-100/50 backdrop-blur-sm border border-slate-200/70 shadow-sm">
                         <img src="ai02.png" alt="Eye Element" class="w-full h-full object-cover">
                     </div>
-                    <div class="aspect-square rounded-[32px] overflow-hidden bg-slate-100 border border-slate-50 shadow-sm">
+                    <div class="aspect-square rounded-[32px] overflow-hidden bg-slate-100/50 backdrop-blur-sm border border-slate-200/70 shadow-sm">
                         <img src="ai03.png" alt="Clock Element" class="w-full h-full object-cover">
                     </div>
-                    <div class="aspect-square rounded-[32px] overflow-hidden bg-slate-100 border border-slate-50 shadow-sm">
+                    <div class="aspect-square rounded-[32px] overflow-hidden bg-slate-100/50 backdrop-blur-sm border border-slate-200/70 shadow-sm">
                         <img src="ai04.png" alt="Stairs Element" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -1223,29 +1303,40 @@ html {
         </div>
     </div>
     
-    <div id="parasite-detail" class="fixed inset-0 z-[18000] hidden overflow-y-auto bg-slate-50">
-        <button onclick="closeDetail('parasite-detail')" class="fixed top-10 right-10 text-slate-400 hover:text-emerald-600 transition-colors z-[18001] font-mono text-[10px] font-bold tracking-widest px-6 py-2 border border-slate-200 rounded-full bg-white/80 backdrop-blur-md shadow-sm">
+    <div id="parasite-detail" class="fixed inset-0 z-[18000] hidden overflow-y-auto bg-[#05080f] text-slate-200 relative overflow-hidden">
+    
+        <!-- 暗色科技背景特效 -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,255,100,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,100,0.03)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+        
+        <!-- 流動數據線條特效 -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-500/10 to-transparent animate-[dataFlow_20s_linear_infinite]"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-transparent via-cyan-500/10 to-transparent animate-[dataFlow_28s_linear_infinite_reverse]"></div>
+        
+        <!-- 微弱掃描線 -->
+        <div class="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,255,150,0.08)_50%)] bg-[size:100%_4px] animate-[scan_6s_linear_infinite]"></div>
+    
+        <button onclick="closeDetail('parasite-detail')" class="fixed top-10 right-10 text-emerald-400 hover:text-white border border-emerald-400/50 px-6 py-2 rounded-full hover:bg-emerald-900/30 transition z-[18001] font-mono text-sm font-bold backdrop-blur-md">
             [ RETURN_TO_SYNERGY ]
         </button>
-    
+        
         <div class="relative z-10 max-w-6xl mx-auto py-32 px-8">
             <div class="mb-20 border-b border-slate-100 pb-16">
                 <p class="font-mono text-xl text-emerald-600 tracking-tight mb-4">"Connected to everything, attached to nothing"</p>
-                <h2 class="text-5xl font-black text-slate-900 tracking-tighter mb-10">數位寄生 / The Digital Parasite</h2>
+                <h2 class="text-5xl font-black text-emerald-300 tracking-tighter mb-10">數位寄生 / The Digital Parasite</h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
-                    <div class="md:col-span-8 space-y-6 text-slate-600 leading-relaxed font-light">
-                        <p class="text-xl text-slate-800">
-                            本作品結合<span class="font-bold text-slate-900 underline decoration-emerald-300">比亞茲萊的頹廢美學</span>與當代「數位寄生」現象，反映感官與現實斷裂的異化現狀。
+                    <div class="md:col-span-8 space-y-6 text-emerald-200 leading-relaxed font-light">
+                        <p class="text-xl text-cyan-300">
+                            本作品結合<span class="font-bold text-emerald-300 underline decoration-emerald-400">比亞茲萊的頹廢美學</span>與當代「數位寄生」現象，反映感官與現實斷裂的異化現狀。
                         </p>
-                        <p>
-                            核心標語「Connected to everything, attached to nothing」深刻傳達出數位連結雖無處不
-                            在，其本質卻脆弱且缺乏溫度的冷峻寂寞。視覺上將植物蔓藤轉化為<span class="font-bold text-slate-900">「數據傳輸線」</span>。透過人物手持手機遮蔽雙眼的怪誕肢體，具象化感官被螢幕劫持的壓抑狀態。
+                        <p class="text-emerald-200">
+                            核心標語「Connected to everything, attached to nothing」深刻傳達出數位連結雖無處不在，其本質卻脆弱且缺乏溫度的冷峻寂寞。視覺上將植物蔓藤轉化為<span class="font-bold text-emerald-300">「數據傳輸線」</span>。透過人物手持手機遮蔽雙眼的怪誕肢體，具象化感官被螢幕劫持的壓抑狀態。
                         </p>
                     </div>
-                    <div class="md:col-span-4 bg-white p-8 rounded-3xl border border-slate-100 shadow-inner">
-                        <h4 class="text-sm font-bold text-slate-900 uppercase font-mono tracking-widest mb-4 border-b pb-2">Aesthetic Focus</h4>
-                        <ul class="space-y-2 text-sm text-slate-600 list-disc list-inside">
+                    
+                    <div class="md:col-span-4 bg-slate-950/70 backdrop-blur-md p-8 rounded-3xl border border-emerald-500/20 shadow-xl shadow-emerald-900/30">
+                        <h4 class="text-sm font-bold text-emerald-400 uppercase font-mono tracking-widest mb-4 border-b border-emerald-500/30 pb-2">Aesthetic Focus</h4>
+                        <ul class="space-y-2 text-emerald-200 list-disc list-inside">
                             <li>Decadent Aesthetics</li>
                             <li>Black & White High Contrast</li>
                             <li>Data vines / 數據蔓藤</li>
@@ -1255,23 +1346,25 @@ html {
                 </div>
             </div>
     
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="md:col-span-2 md:row-span-2 rounded-[40px] overflow-hidden bg-white border border-slate-100 shadow-lg p-3">
-                    <div class="w-full h-full rounded-[32px] overflow-hidden bg-slate-950">
-                        <img src="ai21.png" alt="Parasite Main Visual" class="w-full h-full object-cover block">
+            <!-- 圓形浮動圖片區 -->
+            <div class="space-y-16">
+                <!-- 主圖 - 大圓形（緩慢浮動） -->
+                <div class="flex justify-center">
+                    <div class="w-[420px] h-[420px] rounded-full overflow-hidden border-4 border-emerald-500/30 shadow-2xl shadow-emerald-900/50 animate-float-slow bg-slate-950/80 p-3">
+                        <img src="ai21.png" alt="Parasite Main Visual" class="w-full h-full object-cover rounded-full">
                     </div>
-                </div>
-                
-                <div class="aspect-[4/3] rounded-[32px] overflow-hidden bg-white border border-slate-100 shadow-md p-2">
-                    <img src="ai22.png" alt="怪誕肢體" class="w-full h-full object-cover rounded-[24px]">
                 </div>
     
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="aspect-square rounded-[24px] overflow-hidden bg-slate-950 border border-slate-800">
-                        <img src="ai23.png" alt="黑白線條" class="w-full h-full object-cover">
+                <!-- 三個小圓形橫向並排（不同浮動速度） -->
+                <div class="flex flex-wrap justify-center gap-8 md:gap-12">
+                    <div class="w-[240px] h-[240px] rounded-full overflow-hidden border-4 border-emerald-500/30 shadow-xl shadow-emerald-900/40 animate-float bg-slate-950/80 p-2">
+                        <img src="ai22.png" alt="怪誕肢體" class="w-full h-full object-cover rounded-full">
                     </div>
-                    <div class="aspect-square rounded-[24px] overflow-hidden bg-white border border-slate-100 shadow-inner p-1">
-                        <img src="ai24.png" alt="數據傳輸線" class="w-full h-full object-cover rounded-[20px]">
+                    <div class="w-[240px] h-[240px] rounded-full overflow-hidden border-4 border-emerald-500/30 shadow-xl shadow-emerald-900/40 animate-float-delay bg-slate-950/80 p-2">
+                        <img src="ai23.png" alt="黑白線條" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <div class="w-[240px] h-[240px] rounded-full overflow-hidden border-4 border-emerald-500/30 shadow-xl shadow-emerald-900/40 animate-float-slower bg-slate-950/80 p-2">
+                        <img src="ai24.png" alt="數據傳輸線" class="w-full h-full object-cover rounded-full">
                     </div>
                 </div>
             </div>
@@ -1440,16 +1533,16 @@ html {
         </div>
     </div>
 
-    <!-- 背景轉場元件 -->
-    <div id="coffee-splash"></div>
+        <!-- 背景轉場元件 -->
+        <div id="coffee-splash"></div>
 
-    <div id="custom-cursor">
-        <svg id="cursor-svg" width="40" height="40" viewBox="0 0 100 100">
-            <path id="steam-path-1" d="M30 80 Q20 60 40 40 T30 10" fill="none" stroke="#8D6E63" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
-            <path id="steam-path-2" d="M50 85 Q40 65 60 45 T50 15" fill="none" stroke="#5D4037" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
-            <path id="steam-path-3" d="M70 80 Q60 60 80 40 T70 10" fill="none" stroke="#8D6E63" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
-        </svg>
-    </div>
+        <div id="custom-cursor">
+            <svg id="cursor-svg" width="40" height="40" viewBox="0 0 100 100">
+                <path id="steam-path-1" d="M30 80 Q20 60 40 40 T30 10" fill="none" stroke="#8D6E63" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+                <path id="steam-path-2" d="M50 85 Q40 65 60 45 T50 15" fill="none" stroke="#5D4037" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+                <path id="steam-path-3" d="M70 80 Q60 60 80 40 T70 10" fill="none" stroke="#8D6E63" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+            </svg>
+        </div>
 
     
 
@@ -1482,6 +1575,9 @@ html {
         <div class="floating-element top-[40%] right-[5%]" style="animation-delay: -4s;">
             <div class="big-bean-container" id="bean-container-ai" onclick="enterAIProject()"></div>
         </div>
+
+
+
 
         <div class="main-canvas-wrapper">
             <main class="main-canvas" id="hero-canvas">
@@ -1721,6 +1817,8 @@ html {
                 allowfullscreen>
         </iframe>
     </div>
+
+    
 </div>
 
 <script>
@@ -1813,23 +1911,49 @@ html {
         }
 
         function enterAIProject() {
-            const vortex = document.getElementById('ai-vortex');
-            const page = document.getElementById('ai-page');
-            vortex.classList.add('active');
-            setTimeout(() => {
-                page.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }, 800);
-            setTimeout(() => { vortex.classList.remove('active'); }, 1500);
-        }
+    const vortex = document.getElementById('ai-vortex');
+    const page = document.getElementById('ai-page');
+    
 
-        function enterProject(contentId) {
+
+
+    // 重置狀態（重要！）
+    vortex.classList.remove('active', 'hidden');
+    page.classList.remove('active', 'hidden');
+    vortex.style.display = 'flex';
+    page.style.display = 'block';
+    
+    // 開始進入動畫
+    vortex.classList.add('active');
+    
+    setTimeout(() => {
+        page.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }, 800);
+    
+    setTimeout(() => { 
+        vortex.classList.remove('active'); 
+    }, 1500);
+}
+
+
+// ==================== 新增：UI/UX 卡片跳轉函數 ====================
+function enterProject(contentId) {
             const vortex = document.getElementById('dream-vortex');
             const content = document.getElementById(contentId);
+            
+            if (!content) {
+                console.error('找不到內容區塊:', contentId);
+                return;
+            }
+
             const isChinaAirlines = contentId === 'china-airlines-content';
             const isDream = contentId === 'dream-content';
+
+            // 重置顏色模式
             vortex.classList.remove('blue-mode');
-            if(isDream) {
+
+            if (isDream) {
                 document.body.classList.add('dream-mode');
                 document.getElementById('steam-path-1').setAttribute('stroke', '#c084fc');
                 document.getElementById('steam-path-2').setAttribute('stroke', '#a855f7');
@@ -1840,13 +1964,19 @@ html {
                 document.getElementById('steam-path-2').setAttribute('stroke', '#38bdf8');
                 document.getElementById('steam-path-3').setAttribute('stroke', '#7dd3fc');
             }
+
             vortex.classList.add('active');
+            
             setTimeout(() => {
                 content.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }, 800);
-            setTimeout(() => { vortex.classList.remove('active'); }, 1500);
+
+            setTimeout(() => { 
+                vortex.classList.remove('active'); 
+            }, 1500);
         }
+
 
         function closeOverlay(contentId) {
             const content = document.getElementById(contentId);
@@ -2150,6 +2280,70 @@ function closeFigmaModal() {
     iframe.src = ''; 
     document.body.style.overflow = 'auto';
 }
+
+// ==================== 點擊圖片開啟大圖功能（已排除 UI/UX 卡片） ====================
+function openLightbox(img) {
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-image');
+    
+    lightboxImg.src = img.src;
+    lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    lightbox.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// 自動綁定點擊事件（排除 UI/UX 卡片）
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('img');
+    
+    images.forEach(img => {
+        // 排除條件：太小、已經在連結內、cursor圖、UI/UX卡片
+        if (img.src && 
+            img.width > 150 && 
+            !img.closest('a') && 
+            !img.closest('#custom-cursor') &&
+            !img.closest('.uiux-card')) {   // ← 這裡排除 UI/UX 兩個卡片
+            
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', function() {
+                openLightbox(this);
+            });
+        }
+    });
+
+    // 點擊背景關閉
+    const lightbox = document.getElementById('image-lightbox');
+    if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+            if (e.target.id === 'image-lightbox') closeLightbox();
+        });
+    }
+
+    // ESC 鍵關閉
+    document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape") closeLightbox();
+    });
+});
     </script>
+<!-- 圖片點擊放大 Lightbox -->
+<div id="image-lightbox" class="fixed inset-0 z-[99999] hidden bg-black/95 backdrop-blur-xl items-center justify-center">
+    <div class="relative max-w-[95%] max-h-[95vh] p-4">
+        <img id="lightbox-image" 
+             src="" 
+             class="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl" 
+             alt="">
+        
+        <button onclick="closeLightbox()" 
+                class="absolute -top-12 right-4 text-white text-5xl hover:text-red-400 transition-colors">
+            ✕
+        </button>
+    </div>
+</div>
+    
 </body>
 </html>
